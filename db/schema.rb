@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(version: 2018_08_07_042110) do
   create_table "companies", force: :cascade do |t|
     t.string "name", default: ""
     t.string "kind", null: false
+    t.string "cover_image_url", default: ""
+    t.text "description", default: ""
   end
 
   create_table "conversations", force: :cascade do |t|
@@ -28,10 +30,16 @@ ActiveRecord::Schema.define(version: 2018_08_07_042110) do
     t.index ["user_2_id"], name: "index_conversations_on_user_2_id"
   end
 
+  create_table "genres", force: :cascade do |t|
+    t.string "name", null: false
+  end
+
   create_table "listings", force: :cascade do |t|
     t.string "name", null: false
     t.text "description", default: ""
     t.string "thumbnail", default: ""
+    t.bigint "genre_id"
+    t.index ["genre_id"], name: "index_listings_on_genre_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -70,7 +78,17 @@ ActiveRecord::Schema.define(version: 2018_08_07_042110) do
     t.index ["listing_id"], name: "index_videos_on_listing_id"
   end
 
+  create_table "views", force: :cascade do |t|
+    t.bigint "video_id"
+    t.jsonb "metadata", default: {}
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["video_id"], name: "index_views_on_video_id"
+  end
+
+  add_foreign_key "listings", "genres"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
   add_foreign_key "videos", "listings"
+  add_foreign_key "views", "videos"
 end

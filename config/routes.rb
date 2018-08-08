@@ -5,10 +5,12 @@ Rails.application.routes.draw do
 
   namespace :creator do
     get 'dashboard', to: "dashboard#index"
+    get 'bazaar',    to: "bazaar#browse"
   end
 
   namespace :publisher do
     get 'dashboard', to: "dashboard#index"
+    get 'bazaar',    to: "bazaar#browse"
   end
 
   get '404', to: 'application#render_404'
