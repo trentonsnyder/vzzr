@@ -14,8 +14,11 @@
     <!-- <p class="alert"><%= alert %></p> -->
 
     <% if user_signed_in? %>
-      
-      <%= render 'shared/navbar' %>
+      <% if current_user.company.publisher? %>
+        <%= render 'shared/publisher_navbar' %>
+      <% else %>
+        <%= render 'shared/creator_navbar' %>
+      <% end %>
     <% end %>
 
     <%= yield %>

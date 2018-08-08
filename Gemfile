@@ -9,8 +9,10 @@ gem 'puma', '~> 3.11'
 gem 'uglifier', '>= 1.3.0'
 gem 'devise'
 gem 'bootsnap', '>= 1.1.0', require: false
+gem 'awesome_print'
 
 group :development, :test do
+  gem 'faker', git: 'https://github.com/stympy/faker.git', branch: 'master'
   gem 'pry'
 end
 

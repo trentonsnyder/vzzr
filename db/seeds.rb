@@ -1,1 +1,17 @@
-User.create(email: 'user@example.com', password: 'password')
+company1 = Company.create(kind: 'creator', name: 'Create Co')
+company2 = Company.create(kind: 'publisher', name: 'Pub Co')
+creator = User.create(email: 'creator@example.com', password: 'password', company_id: company1.id, name: Faker::Seinfeld.character)
+publisher = User.create(email: 'publisher@example.com', password: 'password', company_id: company2.id, name: Faker::Seinfeld.character)
+
+convo = Conversation.create(user_1_id: creator.id, user_2_id: publisher.id)
+
+convo.messages.create(body: Faker::Seinfeld.quote, user_id: creator.id)
+convo.messages.create(body: Faker::Seinfeld.quote, user_id: creator.id)
+convo.messages.create(body: Faker::Seinfeld.quote, user_id: publisher.id)
+convo.messages.create(body: Faker::Seinfeld.quote, user_id: creator.id)
+convo.messages.create(body: Faker::Seinfeld.quote, user_id: publisher.id)
+convo.messages.create(body: Faker::Seinfeld.quote, user_id: creator.id)
+convo.messages.create(body: Faker::Seinfeld.quote, user_id: publisher.id)
+convo.messages.create(body: Faker::Seinfeld.quote, user_id: publisher.id)
+convo.messages.create(body: Faker::Seinfeld.quote, user_id: publisher.id)
+convo.messages.create(body: Faker::Seinfeld.quote, user_id: creator.id)

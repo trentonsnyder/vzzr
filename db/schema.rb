@@ -10,10 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_04_162856) do
+ActiveRecord::Schema.define(version: 2018_08_07_042110) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "companies", force: :cascade do |t|
+    t.string "name", default: ""
+    t.string "kind", null: false
+  end
+
+  create_table "conversations", force: :cascade do |t|
+    t.bigint "user_1_id"
+    t.bigint "user_2_id"
+    t.index ["user_1_id", "user_2_id"], name: "index_conversations_on_user_1_id_and_user_2_id"
+    t.index ["user_1_id"], name: "index_conversations_on_user_1_id"
+    t.index ["user_2_id"], name: "index_conversations_on_user_2_id"
+  end
+
+  create_table "listings", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description", default: ""
+    t.string "thumbnail", default: ""
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "body", null: false
+    t.bigint "user_id"
+    t.bigint "conversation_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -26,10 +55,22 @@ ActiveRecord::Schema.define(version: 2018_08_04_162856) do
     t.datetime "last_sign_in_at"
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
+    t.string "name", default: ""
+    t.bigint "company_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_users_on_company_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "videos", force: :cascade do |t|
+    t.string "url", null: false
+    t.bigint "listing_id"
+    t.index ["listing_id"], name: "index_videos_on_listing_id"
+  end
+
+  add_foreign_key "messages", "conversations"
+  add_foreign_key "messages", "users"
+  add_foreign_key "videos", "listings"
 end
