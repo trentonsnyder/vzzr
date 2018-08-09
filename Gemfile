@@ -10,6 +10,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'devise'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'awesome_print'
+gem 'aws-sdk-s3', '~> 1'
+gem 'jquery-rails'
 
 group :development, :test do
   gem 'faker', git: 'https://github.com/stympy/faker.git', branch: 'master'

@@ -39,6 +39,8 @@ ActiveRecord::Schema.define(version: 2018_08_07_042110) do
     t.text "description", default: ""
     t.string "thumbnail", default: ""
     t.bigint "genre_id"
+    t.bigint "company_id"
+    t.index ["company_id"], name: "index_listings_on_company_id"
     t.index ["genre_id"], name: "index_listings_on_genre_id"
   end
 
@@ -86,6 +88,7 @@ ActiveRecord::Schema.define(version: 2018_08_07_042110) do
     t.index ["video_id"], name: "index_views_on_video_id"
   end
 
+  add_foreign_key "listings", "companies"
   add_foreign_key "listings", "genres"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"

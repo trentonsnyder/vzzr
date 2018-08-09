@@ -1,0 +1,20 @@
+<%= form_for(@listing, url: creator_listings_path, html: { class: 'directUpload', data: { 'form-data' => (@s3_direct_post.fields), 'url' => @s3_direct_post.url, 'host' => URI.parse(@s3_direct_post.url).host } }) do |f| %>
+  <div class='progress'></div>
+  <div class="field">
+    <%= f.label :thumbnail %>
+    <%= f.file_field :thumbnail %>
+  </div>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :genre_id %>
+    <%= f.number_field :genre_id, value: 1 %>
+  </div>
+  <%= f.submit %>
+<% end %>

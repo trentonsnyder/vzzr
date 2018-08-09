@@ -16,6 +16,7 @@ class CreateTheDatabase < ActiveRecord::Migration[5.2]
       t.text :description, default: ''
       t.string :thumbnail, default: ''
       t.belongs_to :genre, foreign_key: true
+      t.belongs_to :company, foreign_key: true
     end
 
     create_table :videos do |t|
