@@ -1,1 +1,40 @@
-<%= link_to "Videos", creator_listings_path %>
+<div class="dashboard-grid">
+  <div class="listings-column">
+    <div class="video-nav">
+      <h4>Your Content</h4>
+      <div class="video-nav-links">
+        <%= link_to "All Videos", creator_listings_path %>
+        <%= link_to "Add Video", new_creator_listing_path %>
+      </div>
+    </div>
+    <div class="listings-column-list">
+      <% @listings.each do |listing| %>
+        <div class="video-item-container">
+          <img src="<%= listing.thumbnail %>"/>
+          <div class="video-item">
+            <div class="video-item-details">
+              <span><strong><%= listing.name %></strong></span>
+              <span><small>Genre</small></span>
+              <span><%= listing.description %></span>
+              <span>0 Views</span>
+              <span>0 Contracts</span>
+            </div>
+            <button class="video-item-button">details</button>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="viewership">
+    viewership
+  </div>
+  <div class="revenue">
+    revenue
+  </div>
+  <div class="statistics">
+    statistics
+  </div>
+  <div class="contracts">
+    contracts
+  </div>
+</div>
