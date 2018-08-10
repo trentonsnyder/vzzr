@@ -16,7 +16,7 @@ class Creator::ListingsController < Creator::BaseController
     set_s3_direct_post(current_user.company.id)
     @listing = current_user.company.listings.new(listing_params)
     if @listing.save
-      render :index
+      redirect_to creator_listings_url
     else
       render :new
     end
@@ -30,7 +30,7 @@ class Creator::ListingsController < Creator::BaseController
     @listing = current_user.company.listings.find(params[:id])
     @listing.update(listing_params)
     if @listing.save
-      render :show
+      redirect_to creator_listings_url
     else
       render :new
     end
@@ -39,7 +39,7 @@ class Creator::ListingsController < Creator::BaseController
   def destroy
     @listing = current_user.company.find(params[:id])
     @listing.destroy
-    render :index
+    redirect_to creator_listings_url
   end
 
   protected

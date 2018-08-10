@@ -5,10 +5,6 @@
   grid-template-rows: 2.5fr 1fr 2.5fr;
   grid-gap: 20px;
   overflow-x: auto;
-  /* grid-template-areas: 
-    "listing-column viewership revenue"
-    "listing-column statistics statistics"
-    "listing-column contracts contracts"; */
 }
 
 .dashboard-grid > div {
@@ -40,10 +36,10 @@
 .video-nav {
   display: flex;
   flex: 1;
-  height: 45px;
+  height: 35px;
   align-items: center;
   justify-content: space-between;
-  padding: 5px;
+  padding: 5px 20px;
 }
 
 .video-nav-links > a {
@@ -65,8 +61,8 @@
 }
 
 .video-item-container > img {
-  max-width: 200px;
-  max-height: 200px;
+  width: 200px;
+  height: 200px;
 }
 
 .video-item-details {

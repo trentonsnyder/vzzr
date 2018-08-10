@@ -1,0 +1,38 @@
+.devise-view {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: purple;
+  height: 100%;
+}
+
+.devise-form {
+  padding: 20px;
+  width: 80%;
+  max-width: 550px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.devise-form > form > div.field > input {
+  width: 100%;
+}
+
+.devise-form > form > div.field > div.field_with_errors > input {
+  width: 100%;
+}
+
+.devise-form-links {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.devise-logo {
+  align-self: center;
+}

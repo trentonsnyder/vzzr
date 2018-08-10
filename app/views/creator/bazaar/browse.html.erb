@@ -1,0 +1,18 @@
+<div class="bazaar-container">
+  <div class="bazaar-heading">
+    <span><strong>Publishers</strong></span>
+  </div>
+  <div class="bazaar-publishers">
+    <% @publishers.each do |pub| %>
+      <div class="bazaar-item">
+        <img src="<% pub.cover_image_url %>" alt="Cover Image"/>
+        <div class="bazaar-item-details">
+          <span><strong><%= pub.name %></strong></span>
+          <span><%= pub.description %></span>
+          <span>0 Views</span>
+        </div>
+        <button>Details</button>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   namespace :creator do
     get 'dashboard', to: "dashboard#index"
-    get 'bazaar',    to: "bazaar#browse"
+    get 'bazaar/browse',    to: "bazaar#browse"
 
     resources :listings
   end
