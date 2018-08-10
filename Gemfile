@@ -12,6 +12,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'awesome_print'
 gem 'aws-sdk-s3', '~> 1'
 gem 'jquery-rails'
+gem 'bootstrap', '~> 4.1', '>= 4.1.3'
 
 group :development, :test do
   gem 'faker', git: 'https://github.com/stympy/faker.git', branch: 'master'

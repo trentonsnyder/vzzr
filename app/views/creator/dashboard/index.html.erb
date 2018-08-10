@@ -4,7 +4,7 @@
       <span><strong>Your Content</strong></span>
       <div class="video-nav-links">
         <%= link_to "All Videos", creator_listings_path %>
-        <%= link_to "Add Video", new_creator_listing_path %>
+        <%= link_to 'New Video', new_creator_listing_path,  {remote: true, 'data-toggle':  "modal", 'data-target': '#modal-window', render_layout: false} %>
       </div>
     </div>
     <div class="listings-column-list">
@@ -38,3 +38,5 @@
     contracts
   </div>
 </div>
+
+<div class="modal" id="modal-window" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

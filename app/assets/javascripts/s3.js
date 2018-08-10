@@ -1,10 +1,10 @@
-$(document).ready(function() {
-  $(function() {
+S3 = {
+  sendUp() {
     $('.directUpload').find("input:file").each(function(i, elem) {
       var fileInput    = $(elem);
       var form         = $(fileInput.parents('form:first'));
       var submitButton = form.find('input[type="submit"]');
-      var progressBar  = $("<div class='bar'></div>");
+      var progressBar  = $("<div class='bar'>Waiting</div>");
       var barContainer = $("<div class='progress'></div>").append(progressBar);
       fileInput.after(barContainer);
       fileInput.fileupload({
@@ -31,7 +31,7 @@ $(document).ready(function() {
         },
         done: function(e, data) {
           submitButton.prop('disabled', false);
-          progressBar.text("Uploading done");
+          progressBar.text("Done!");
   
           // extract key and generate URL from response
           var key   = $(data.jqXHR.responseXML).find("Key").text();
@@ -43,12 +43,20 @@ $(document).ready(function() {
         },
         fail: function(e, data) {
           submitButton.prop('disabled', false);
-  
           progressBar.
             css("background", "red").
             text("Failed");
         }
       });
     });
-  });
+  }
+}
+
+
+$(document).ready(() => {
+  return S3.sendUp()
 })
+
+$(document).on('shown.bs.modal', () => {
+  return S3.sendUp()
+});

@@ -10,13 +10,16 @@ class Creator::ListingsController < Creator::BaseController
   def new
     set_s3_direct_post(current_user.company.id)
     @listing = current_user.company.listings.new()
+    respond_to do |format|
+      format.js
+    end
   end
 
   def create
     set_s3_direct_post(current_user.company.id)
     @listing = current_user.company.listings.new(listing_params)
     if @listing.save
-      redirect_to creator_listings_url
+      redirect_to creator_dashboard_url
     else
       render :new
     end

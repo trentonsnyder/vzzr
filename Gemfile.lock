@@ -53,6 +53,8 @@ GEM
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
     arel (9.0.0)
+    autoprefixer-rails (9.1.0)
+      execjs
     awesome_print (1.8.0)
     aws-partitions (1.24.0)
     aws-sdk-core (3.6.0)
@@ -70,6 +72,10 @@ GEM
     bcrypt (3.1.12)
     bootsnap (1.3.1)
       msgpack (~> 1.0)
+    bootstrap (4.1.3)
+      autoprefixer-rails (>= 6.0.3)
+      popper_js (>= 1.12.9, < 2)
+      sass (>= 3.5.2)
     builder (3.2.3)
     coderay (1.1.2)
     concurrent-ruby (1.0.5)
@@ -118,6 +124,7 @@ GEM
       mini_portile2 (~> 2.3.0)
     orm_adapter (0.5.0)
     pg (1.0.0)
+    popper_js (1.14.3)
     pry (0.11.3)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -158,6 +165,11 @@ GEM
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
     ruby_dep (1.5.0)
+    sass (3.5.7)
+      sass-listen (~> 4.0.0)
+    sass-listen (4.0.0)
+      rb-fsevent (~> 0.9, >= 0.9.4)
+      rb-inotify (~> 0.9, >= 0.9.7)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -189,6 +201,7 @@ DEPENDENCIES
   awesome_print
   aws-sdk-s3 (~> 1)
   bootsnap (>= 1.1.0)
+  bootstrap (~> 4.1, >= 4.1.3)
   devise
   faker!
   jquery-rails
