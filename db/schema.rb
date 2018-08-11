@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 2018_08_07_042110) do
 
   create_table "videos", force: :cascade do |t|
     t.string "url", null: false
+    t.string "thumbnail", default: ""
     t.bigint "listing_id"
     t.index ["listing_id"], name: "index_videos_on_listing_id"
   end

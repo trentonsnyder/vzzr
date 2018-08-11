@@ -7,7 +7,9 @@ Rails.application.routes.draw do
     get 'dashboard', to: "dashboard#index"
     get 'bazaar/browse',    to: "bazaar#browse"
 
-    resources :listings
+    resources :listings do
+      resources :videos
+    end
   end
 
   namespace :publisher do

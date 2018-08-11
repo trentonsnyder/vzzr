@@ -1,10 +1,10 @@
-.new-listing-form {
+/* .new-listing-form {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 20px;
 }
-
-.new-listing-form > div {
+ */
+.new-listing-form {
   padding: 12px;
   background-color: white;
   border: 1px solid grey;

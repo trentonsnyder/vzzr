@@ -21,6 +21,7 @@ class CreateTheDatabase < ActiveRecord::Migration[5.2]
 
     create_table :videos do |t|
       t.string :url, null: false
+      t.string :thumbnail, default: ''
       t.belongs_to :listing, foreign_key: true
     end
     

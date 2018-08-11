@@ -19,7 +19,7 @@ class Creator::ListingsController < Creator::BaseController
     set_s3_direct_post(current_user.company.id)
     @listing = current_user.company.listings.new(listing_params)
     if @listing.save
-      redirect_to creator_dashboard_url
+      redirect_to new_creator_listing_video_url(@listing, format: :js)
     else
       render :new
     end
@@ -58,6 +58,6 @@ class Creator::ListingsController < Creator::BaseController
       region: 'us-west-2',
       name: ENV['S3_BUCKET']
     )
-    @s3_direct_post = bucket.presigned_post(key: "uploads/#{company_id}/#{SecureRandom.uuid}${filename}", success_action_status: '201', acl: 'public-read')
+    @s3_direct_post = bucket.presigned_post(key: "uploads/#{company_id}/listings/#{SecureRandom.uuid}${filename}", success_action_status: '201', acl: 'public-read')
   end
 end
