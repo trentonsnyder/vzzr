@@ -193,6 +193,9 @@ label > .label-body {
   display: inline-block;
   margin-left: .5rem;
   font-weight: normal; }
+input[type="file"] {
+  margin-bottom: 0;
+}
 
 
 /* Lists
@@ -290,3 +293,8 @@ there.
 
 /* Larger than Desktop HD */
 @media (min-width: 1200px) {}
+
+
+textarea {
+  resize: none;
+}
