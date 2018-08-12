@@ -1,30 +1,30 @@
 <div class="chat-grid">
   <div>
-    <% @messages.includes(:user, conversation: {participants: :company}).each do |message| %>
-      <div>
+    <% @messages.includes(:user).each do |message| %>
+      <%= link_to creator_conversation_path(message.id, format: :js), remote: true do %>
         <div>
-          <span><strong><%= message.company_chat_name(current_user.company) %></strong></span>
+          <div>
+            <span><strong><%= message.company_chat_name(current_user.company) %></strong></span>
+          </div>
+          <div>
+            <span><%= message.user.name %>: <%= message.body%></span>
+          </div>
         </div>
-        <div>
-          <span><%= message.user.name %>: <%= message.body%></span>
-        </div>
-      </div>
+      <% end %>
     <% end %>
   </div>
-  <div>
+  <div id="chat-window">
     Chat window
   </div>
-  <div>
+  <div id="chat-details">
     details stuff
   </div>
 </div>
-
-
 
 <pre>
   <%= @messages.map(&:conversation_id).sort %>
 </pre>
 <br />
 <pre>
-<%= current_user.company.conversations.map(&:id).sort %>
+  <%= current_user.company.conversations.map(&:id).sort %>
 </pre>

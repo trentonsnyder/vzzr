@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   namespace :creator do
     get 'dashboard', to: "dashboard#index"
     get 'bazaar/browse',    to: "bazaar#browse"
-    get 'chat', to: "conversations#index"
 
+    resources :conversations, only: [:index, :show]
     resources :listings do
       resources :videos
     end

@@ -1,0 +1,7 @@
+<div>
+  <% @conversation.messages.order('created_at DESC', 'id DESC').each do |message| %>
+    <div>
+      <%= message.user.name %>: <%= message.body %>
+    </div>
+  <% end %>
+</div>

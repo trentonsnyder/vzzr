@@ -1,16 +1,26 @@
-company1 = Company.create(kind: "creator", name: "Create Co", description: Faker::Hipster.sentences(1).first)
-company2 = Company.create(kind: "publisher", name: "Pub Co", description: Faker::Hipster.sentences(1).first)
+company1 = Company.create(kind: "creator", name: "Create Co", description: Faker::Hipster.sentences(1).first, cover_image_url: "//vzzr.s3-us-west-2.amazonaws.com/defaults/camel.jpg")
+company2 = Company.create(kind: "publisher", name: "Pub Co", description: Faker::Hipster.sentences(1).first, cover_image_url: "//vzzr.s3-us-west-2.amazonaws.com/defaults/camel.jpg")
 
 creator = User.create(email: "creator@example.com", password: "password", company_id: company1.id, name: Faker::Seinfeld.character)
 publisher = User.create(email: "publisher@example.com", password: "password", company_id: company2.id, name: Faker::Seinfeld.character)
 
+def_img_bank = [
+  "//vzzr.s3-us-west-2.amazonaws.com/defaults/bear.jpg",
+  "//vzzr.s3-us-west-2.amazonaws.com/defaults/marnie.jpg",
+  "//vzzr.s3-us-west-2.amazonaws.com/defaults/capybara.jpg",
+  "//vzzr.s3-us-west-2.amazonaws.com/defaults/narwhhal.jpg",
+  "//vzzr.s3-us-west-2.amazonaws.com/defaults/tiger.jpg",
+  "//vzzr.s3-us-west-2.amazonaws.com/defaults/dino.jpg",
+  "//vzzr.s3-us-west-2.amazonaws.com/defaults/panda.jpg"
+]
+
 12.times do
-  co = Company.create(kind: "publisher", name: Faker::Pokemon.name, description: Faker::Hipster.sentences(1).first)
+  co = Company.create(kind: "publisher", name: Faker::Pokemon.name, description: Faker::Hipster.sentences(1).first, cover_image_url: def_img_bank.sample)
   User.create(email: "creator#{co.id}@example.com", password: "password", company_id: co.id, name: Faker::Seinfeld.character)
 end
 
 12.times do
-  co = Company.create(kind: "creator", name: Faker::DragonBall.character, description: Faker::Hipster.sentences(1).first)
+  co = Company.create(kind: "creator", name: Faker::DragonBall.character, description: Faker::Hipster.sentences(1).first, cover_image_url: def_img_bank.sample)
   User.create(email: "publisher#{co.id}@example.com", password: "password", company_id: co.id, name: Faker::Seinfeld.character)
 end
 

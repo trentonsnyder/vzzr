@@ -5,7 +5,7 @@
   <div class="bazaar-publishers">
     <% @publishers.each do |pub| %>
       <div class="bazaar-item">
-        <img src="<% pub.cover_image_url %>" alt="Cover Image"/>
+        <img src="<%= pub.cover_image_url %>" />
         <div class="bazaar-item-details">
           <span><strong><%= pub.name %></strong></span>
           <span><%= pub.description %></span>
