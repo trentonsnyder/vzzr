@@ -1,0 +1,12 @@
+.chat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px;
+}
+
+.chat-grid > div {
+  border: 1px solid grey;
+  border-radius: 5px;
+  box-shadow: 0px 1px 6px grey;
+  background-color: white;
+}

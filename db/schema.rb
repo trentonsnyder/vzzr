@@ -23,11 +23,6 @@ ActiveRecord::Schema.define(version: 2018_08_07_042110) do
   end
 
   create_table "conversations", force: :cascade do |t|
-    t.bigint "user_1_id"
-    t.bigint "user_2_id"
-    t.index ["user_1_id", "user_2_id"], name: "index_conversations_on_user_1_id_and_user_2_id"
-    t.index ["user_1_id"], name: "index_conversations_on_user_1_id"
-    t.index ["user_2_id"], name: "index_conversations_on_user_2_id"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -44,14 +39,31 @@ ActiveRecord::Schema.define(version: 2018_08_07_042110) do
     t.index ["genre_id"], name: "index_listings_on_genre_id"
   end
 
+  create_table "message_read_states", force: :cascade do |t|
+    t.bigint "message_id"
+    t.bigint "company_id"
+    t.datetime "read_date"
+    t.index ["company_id"], name: "index_message_read_states_on_company_id"
+    t.index ["message_id"], name: "index_message_read_states_on_message_id"
+  end
+
   create_table "messages", force: :cascade do |t|
     t.text "body", null: false
-    t.bigint "user_id"
     t.bigint "conversation_id"
+    t.bigint "user_id"
+    t.bigint "company_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_messages_on_company_id"
     t.index ["conversation_id"], name: "index_messages_on_conversation_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "participants", force: :cascade do |t|
+    t.bigint "conversation_id"
+    t.bigint "company_id"
+    t.index ["company_id"], name: "index_participants_on_company_id"
+    t.index ["conversation_id"], name: "index_participants_on_conversation_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -91,8 +103,13 @@ ActiveRecord::Schema.define(version: 2018_08_07_042110) do
 
   add_foreign_key "listings", "companies"
   add_foreign_key "listings", "genres"
+  add_foreign_key "message_read_states", "companies"
+  add_foreign_key "message_read_states", "messages"
+  add_foreign_key "messages", "companies"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
+  add_foreign_key "participants", "companies"
+  add_foreign_key "participants", "conversations"
   add_foreign_key "videos", "listings"
   add_foreign_key "views", "videos"
 end

@@ -32,19 +32,24 @@ class CreateTheDatabase < ActiveRecord::Migration[5.2]
     end
 
     create_table :conversations do |t|
-      t.bigint :user_1_id, foreign_key: true
-      t.bigint :user_2_id, foreign_key: true
     end
 
     create_table :messages do |t|
       t.text :body, null: false
-      t.belongs_to :user, foreign_key: true
       t.belongs_to :conversation, foreign_key: true
+      t.belongs_to :user, foreign_key: true
       t.timestamps
     end
 
-    add_index :conversations, :user_1_id
-    add_index :conversations, :user_2_id
-    add_index :conversations, [:user_1_id, :user_2_id]
+    create_table :participants do |t|
+      t.belongs_to :conversation, foreign_key: true
+      t.belongs_to :company, foreign_key: true
+    end
+
+    create_table :message_read_states do |t|
+      t.belongs_to :message, foreign_key: true
+      t.belongs_to :company, foreign_key: true
+      t.datetime :read_date
+    end
   end
 end

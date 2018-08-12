@@ -1,0 +1,30 @@
+<div class="chat-grid">
+  <div>
+    <% @messages.includes(:user, conversation: {participants: :company}).each do |message| %>
+      <div>
+        <div>
+          <span><strong><%= message.company_chat_name(current_user.company) %></strong></span>
+        </div>
+        <div>
+          <span><%= message.user.name %>: <%= message.body%></span>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div>
+    Chat window
+  </div>
+  <div>
+    details stuff
+  </div>
+</div>
+
+
+
+<pre>
+  <%= @messages.map(&:conversation_id).sort %>
+</pre>
+<br />
+<pre>
+<%= current_user.company.conversations.map(&:id).sort %>
+</pre>
