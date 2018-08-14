@@ -10,11 +10,19 @@ class Message < ApplicationRecord
   after_commit :generate_read_states
 
   def message_time
-    created_at.strftime("%m/%d/%y at %l:%M %p")
+    created_at.strftime("%m/%d %l:%M %p")
   end
 
   def company_chat_name(user_company)
     conversation.companies.where("companies.id != ?", user_company.id).first.name
+  end
+
+  def direction(current_user)
+    if current_user.company.id === user.company.id
+      "outbound"
+    else
+      "inbound"
+    end
   end
 
   protected

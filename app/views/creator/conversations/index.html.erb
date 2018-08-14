@@ -1,23 +1,30 @@
 <div class="chat-grid">
   <div>
+    <div class="column-header">
+      <span class="column-title"><strong>Messages</strong></span>
+    </div>
     <% @messages.includes(:user).each do |message| %>
-      <%= link_to creator_conversation_path(message.id, format: :js), remote: true do %>
+      <div class="chat-item">
+        <%= link_to creator_conversation_path(message.id, format: :js), remote: true do %>
         <div>
-          <div>
-            <span><strong><%= message.company_chat_name(current_user.company) %></strong></span>
-          </div>
-          <div>
-            <span><%= message.user.name %>: <%= message.body%></span>
-          </div>
+          <span><strong><%= message.company_chat_name(current_user.company) %></strong></span>
         </div>
-      <% end %>
+        <div>
+          <span><%= message.user.name %>: <%= message.body%></span>
+        </div>
+        <% end %>
+      </div>
     <% end %>
   </div>
   <div id="chat-window">
-    Chat window
+    <div class="empty-chat">
+      <span>No message selected.</span>
+    </div>
   </div>
   <div id="chat-details">
-    details stuff
+    <div class="empty-chat">
+      <span>No message selected.</span>
+    </div
   </div>
 </div>
 

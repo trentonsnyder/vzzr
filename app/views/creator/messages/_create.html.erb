@@ -1,0 +1,9 @@
+<div class="convo-item-container <%= @message.direction(current_user) %>">
+  <small><%= @message.user.name %></small>
+  <div class="convo-item-bubble <%= @message.direction(current_user) %>">
+    <%= @message.body %>
+  </div>
+  <span>
+    <small><%= @message.message_time %></small>
+  </span>
+</div>

@@ -14,6 +14,7 @@ class Creator::ConversationsController < Creator::BaseController
   def show
     message = Message.find(params[:id])
     @conversation = current_user.company.conversations.find_by(id: message.conversation_id)
+    @message = @conversation.messages.new()
     if @conversation.nil?
       redirect_to creator_conversations_path
     else

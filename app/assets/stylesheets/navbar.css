@@ -21,6 +21,7 @@
 
 .navbar-links > a {
   width: 100px;
+  text-align: center;
 }
 
 /* Dropdown button */

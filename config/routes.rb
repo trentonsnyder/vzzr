@@ -7,7 +7,9 @@ Rails.application.routes.draw do
     get 'dashboard', to: "dashboard#index"
     get 'bazaar/browse',    to: "bazaar#browse"
 
-    resources :conversations, only: [:index, :show]
+    resources :conversations, only: [:index, :show] do
+      resources :messages, only: [:create]
+    end
     resources :listings do
       resources :videos
     end
