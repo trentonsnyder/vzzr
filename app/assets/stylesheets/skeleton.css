@@ -250,7 +250,7 @@ td:last-child {
 
 /* Spacing
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-button,
+/* button,
 .button {
   margin-bottom: 1rem; }
 input,
@@ -266,7 +266,7 @@ table,
 p,
 ul,
 ol {
-  margin-bottom: 2.5rem; }
+  margin-bottom: 2.5rem; } */
 
 
 /* Media Queries

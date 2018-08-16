@@ -1,41 +1,65 @@
 .dashboard-grid {
-  margin: 15px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 2.5fr 1fr 2.5fr;
-  grid-gap: 20px;
-  overflow-x: auto;
-}
-
-.dashboard-grid > div {
-  border-radius: 5px;
-  box-shadow: 0px 2px 6px grey;
-  background-color: #ccc;
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  margin: 10px 0px;
 }
 
 .listings-column {
-  grid-area: 1 / 1 / 4 / 2;
+  width: 400px;
+  background-color: #ccc;
+  display: flex;
+  flex-direction: column;
+  margin: 0px 10px;
 }
 
-.viewership {
-  grid-area: 1 / 2 / 2 / 3;
+.bullshit-column {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
-.revenue {
-  grid-area: 1 / 3 / 2 / 4;
+.bullshit-column {
+  display: flex;
+  flex: 1;
 }
 
-.statistics {
-  grid-area: 2 / 2 / 3 / 4;
+.graph-row {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+}
+
+.graph-row > div {
+  flex: 1;
+  display: flex;
+  background-color: #ccc;
+  margin: 0px 10px;
+}
+
+.dumb-info-row {
+  display: flex;
+  flex-direction: column;
+}
+
+.dumb-info-row > {
+  display: flex;
+  flex: 1;
 }
 
 .contracts {
-  grid-area: 3 / 2 / 4 / 4;
+  flex: 1;
+  background-color: #ccc;
+  margin: 0px 10px;
+}
+
+.statistics {
+  background-color: #ccc;
+  margin: 10px 10px;
 }
 
 .video-nav {
   display: flex;
-  flex: 1;
   height: 35px;
   align-items: center;
   justify-content: space-between;
@@ -48,7 +72,7 @@
 }
 
 .listings-column-list {
-  overflow-y: auto;
+  overflow: auto;
 }
 
 .video-item-container {

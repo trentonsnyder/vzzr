@@ -1,22 +1,24 @@
-<div class="chat-grid">
-  <div>
+<div class="chat-grid" data-conversation-id="<%= current_user.company.id %>">
+  <div class="conversation-column">
     <div class="column-header">
       <span class="column-title"><strong>Messages</strong></span>
     </div>
-    <% @messages.includes(:user).each do |message| %>
-      <div class="chat-item">
-        <%= link_to creator_conversation_path(message.id, format: :js), remote: true do %>
-        <div>
-          <span><strong><%= message.company_chat_name(current_user.company) %></strong></span>
+    <div class="conversation-content">
+      <% @messages.includes(:user).each do |message| %>
+        <div class="chat-item">
+          <%= link_to creator_conversation_path(message.id, format: :js), remote: true do %>
+          <div>
+            <span><strong><%= message.company_chat_name(current_user.company) %></strong></span>
+          </div>
+          <div>
+            <span><%= message.user.name %>: <%= message.body%></span>
+          </div>
+          <% end %>
         </div>
-        <div>
-          <span><%= message.user.name %>: <%= message.body%></span>
-        </div>
-        <% end %>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
-  <div id="chat-window">
+  <div id="chat-window" class="conversation-column">
     <div class="empty-chat">
       <span>No message selected.</span>
     </div>
@@ -24,14 +26,6 @@
   <div id="chat-details">
     <div class="empty-chat">
       <span>No message selected.</span>
-    </div
+    </div>
   </div>
 </div>
-
-<pre>
-  <%= @messages.map(&:conversation_id).sort %>
-</pre>
-<br />
-<pre>
-  <%= current_user.company.conversations.map(&:id).sort %>
-</pre>

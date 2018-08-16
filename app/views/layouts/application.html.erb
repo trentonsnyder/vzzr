@@ -4,7 +4,7 @@
     <title>Vzzr</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%= action_cable_meta_tag if user_signed_in? %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
@@ -12,15 +12,17 @@
   <body>
     <!-- <p class="notice"><%= notice %></p> -->
     <!-- <p class="alert"><%= alert %></p> -->
-
-    <% if user_signed_in? %>
-      <% if current_user.company.publisher? %>
-        <%= render 'shared/publisher_navbar' %>
-      <% else %>
-        <%= render 'shared/creator_navbar' %>
+    <div class="app-container">
+      <% if user_signed_in? %>
+        <% if current_user.company.publisher? %>
+          <%= render 'shared/publisher_navbar' %>
+        <% else %>
+          <%= render 'shared/creator_navbar' %>
+        <% end %>
       <% end %>
-    <% end %>
-
-    <%= yield %>
+      <div class="content-container">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>

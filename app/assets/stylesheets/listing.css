@@ -24,6 +24,6 @@
   font-size: 16px;
 }
 
-.listing-field > input, textarea {
+.listing-field > input, textarea, select {
   width: 100%;
 }
