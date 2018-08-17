@@ -1,21 +1,46 @@
-if ($('meta[name=action-cable-url]').length) {
-  var messages = $("#chat-grid")
-  App.chat = App.cable.subscriptions.create({
-    channel: "ChatChannel",
-    conmpany_id: messages.data("company-id")
-  }, {
-    connected: function() {
-      // Called when the subscription is ready for use on the server
-      
-    },
+$(document).ready(() => {
+  if ($('meta[name=action-cable-url]').length) {
+    App.chat = App.cable.subscriptions.create({
+      channel: "ChatChannel",
+      company_id: $("#chat-grid").data("company-id")
+    }, {
+      connected: function() {
+        // Called when the subscription is ready for use on the server
+        
+      },
+  
+      disconnected: function() {
+        // Called when the subscription has been terminated by the server
+      },
+  
+      received: function(data) {
+        var message = data.message
+        var user = data.user
+        var current = false
+        if (message.conversation_id == $("#convo-body").data("conversationId")) {
+          current = true
+          var html = '<div>'
+          html += '<div class="convo-item-container inbound">'
+          html += '<small>' + user.name + '</small>'
+          html += '<div class="convo-item-bubble inbound">' + message.body + '</div>'
+          html += '<span><small>' + message.message_time +'</small></span>'
+          html += '</div>'
+          html += '</div>'
+          $("#convo-body").append( html );
+          var objDiv = document.getElementById("convo-body");
+          objDiv.scrollTop = objDiv.scrollHeight;
+        }
+          var convoItem ='<div class="chat-item" id="chat-item-' + message.conversation_id + '" data-conversation-id="' + message.conversation_id + '">'
+          convoItem += '<a href="/' + message.to_kind + '/conversations/' + message.conversation_id + '" data-remote="true">'
+          convoItem += '<div><span><strong>' + message.company_chat_name + '</strong></span></div>'
+          convoItem += '<div><span>' + user.name + ':' + message.body + '</span></div>'
+          convoItem += '</a></div>'
+        
+        // user current for read/unread
+        $("#chat-item-" + message.conversation_id).remove();
 
-    disconnected: function() {
-      // Called when the subscription has been terminated by the server
-    },
-
-    received: function(data) {
-      // determine if it goes in sidebar or chat
-      $('#chat-body').append(data['message']);
-    }
-  });
-}
+        $("#conversation-overview").prepend(convoItem)
+      }
+    });
+  }
+})

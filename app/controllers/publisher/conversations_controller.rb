@@ -1,4 +1,4 @@
-class Creator::ConversationsController < Creator::BaseController
+class Publisher::ConversationsController < Publisher::BaseController
   def index
     convo_ids = current_user.company.conversations.ids
     @messages = Message.includes(:conversation)
@@ -17,7 +17,7 @@ class Creator::ConversationsController < Creator::BaseController
     @conversation = current_user.company.conversations.find_by(id: message.conversation_id)
     @message = @conversation.messages.new()
     if @conversation.nil?
-      redirect_to creator_conversations_path
+      redirect_to publisher_conversations_path
     else
       @company = @conversation.companies.where("companies.id != ?", current_user.company.id).first
       respond_to do |format|

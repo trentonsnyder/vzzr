@@ -14,7 +14,7 @@
   <% end %>
 </div>
 <div class="convo-form">
-  <%= form_for(@message, url: creator_conversation_messages_path(@conversation.id), remote: true, html: {class: "big-form"} ) do |f| %>
+  <%= form_for(@message, url: publisher_conversation_messages_path(@conversation.id), remote: true, html: {class: "big-form"} ) do |f| %>
     <%= f.text_area :body, placeholder: 'your message' %>
     <div> 
       <%= f.submit 'send' %>

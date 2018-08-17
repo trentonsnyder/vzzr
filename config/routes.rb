@@ -18,6 +18,10 @@ Rails.application.routes.draw do
   namespace :publisher do
     get 'dashboard', to: "dashboard#index"
     get 'bazaar',    to: "bazaar#browse"
+
+    resources :conversations, only: [:index, :show] do
+      resources :messages, only: [:create]
+    end
   end
 
   get '404', to: 'application#render_404'

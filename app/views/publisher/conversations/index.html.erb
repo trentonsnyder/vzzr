@@ -6,7 +6,7 @@
     <div class="conversation-content" id="conversation-overview">
       <% @messages.includes(:user).each do |message| %>
         <div class="chat-item" id="chat-item-<%= message.conversation.id%>" data-conversation-id="<%= message.conversation_id%>">
-          <%= link_to creator_conversation_path(message.id, format: :js), remote: true do %>
+          <%= link_to publisher_conversation_path(message.id, format: :js), remote: true do %>
           <div>
             <span><strong><%= message.company_chat_name(current_user.company) %></strong></span>
           </div>

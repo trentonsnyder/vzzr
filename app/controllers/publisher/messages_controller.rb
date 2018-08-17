@@ -1,4 +1,4 @@
-class Creator::MessagesController < Creator::BaseController
+class Publisher::MessagesController < Publisher::BaseController
   def create
     @conversation = current_user.company.conversations.find(params[:conversation_id])
     @message = @conversation.messages.new(message_params)
@@ -7,20 +7,21 @@ class Creator::MessagesController < Creator::BaseController
       ids.each do |id|
         ActionCable.server.broadcast "company_#{id}_channel",
           { message: {
-              body: @message.body,
-              company_chat_name: @message.company_chat_name(current_user.company),
-              conversation_id: @conversation.id,
-              message_time: @message.message_time,
-              to_kind: "publisher"
-            }, 
-            user: current_user
-          }
+            body: @message.body,
+            company_chat_name: @message.company_chat_name(current_user.company),
+            conversation_id: @conversation.id,
+            message_time: @message.message_time,
+            direction: @message.direction(current_user),
+            to_kind: "creator"
+          }, 
+          user: current_user
+        }
       end
       respond_to do |format|
         format.js
       end
     else
-      redirect_to creator_conversation_url(@conversation.id)
+      redirect_to publisher_conversation_url(@conversation.id)
     end
   end
 

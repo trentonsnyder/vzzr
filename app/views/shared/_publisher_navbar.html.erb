@@ -6,12 +6,12 @@
   </div>
   <div class="navbar-links">
     <%= link_to "Dashboard", root_path %>
-    <%= link_to "Analytics", root_path %>
+    <%= link_to "Chat", publisher_conversations_path %>
     <%= link_to "Bazaar", root_path %>
   </div>
   <div class="dropdown">
-    <div class="drop-btn">Dropdown 
-      <i class="fa fa-caret-down"></i>
+    <div class="drop-btn">
+      <%= current_user.name %>
     </div>
     <div class="dropdown-content">
       <%= link_to "Profile", root_path %>
