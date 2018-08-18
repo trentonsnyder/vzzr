@@ -1,0 +1,36 @@
+<div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-content modal-two-sections">
+    <div class="modal-left-section">
+      <img src="<%= @creator.cover_image_url %>"/>
+      <div class="creator-details">
+        <span><strong><%= @creator.name %></strong></span>
+        <span><%= @creator.description %></span>
+        <span>0 Views</span>
+        <button>Chat with them</button>
+      </div>
+    </div>
+    <div>
+    <div class="modal-right-section">
+      <div class="listing-header">
+        <div>
+          <span class="listing-title"><strong>Creator Content</strong></span>
+        </div>
+        <div class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true"><strong>&times;</strong></span>
+        </div>
+      </div>
+      <div class="creator-listings">
+        <% @listings.each do |listing| %>
+          <div class="section-listing">
+            <img src="<%= listing.thumbnail %>" />
+            <div>
+              <span><%= listing.name %></span>
+              <span><%= listing.description %></span>
+              <span>0 views</span>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

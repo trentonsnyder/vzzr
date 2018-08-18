@@ -1,0 +1,66 @@
+.modal-content.modal-two-sections {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.modal-left-section {
+  background-color: #ccc;
+  border-radius: 5px;
+  box-shadow: 1px 1px 6px #ccc;
+  margin: 5px;
+  max-width: 300px;
+}
+
+.modal-left-section > img {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  width: 100%;
+  max-height: 200px;
+}
+
+.modal-right-section {
+  padding: 12px;
+  background-color: #ccc;
+  border-radius: 5px;
+  box-shadow: 1px 1px 6px #ccc;
+  margin: 5px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.section-listing {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.section-listing > img {
+  width: 200px;
+  max-height: 125px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.section-listing > div {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+}
+
+.creator-details {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.creator-listings {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  min-width: 300px;
+}

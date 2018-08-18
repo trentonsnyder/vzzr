@@ -19,9 +19,12 @@ Rails.application.routes.draw do
     get 'dashboard', to: "dashboard#index"
     get 'bazaar',    to: "bazaar#browse"
 
+    resources :creators, only: [:show]
     resources :conversations, only: [:index, :show] do
       resources :messages, only: [:create]
     end
+
+    resources :listings
   end
 
   get '404', to: 'application#render_404'

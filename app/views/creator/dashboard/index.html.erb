@@ -4,7 +4,7 @@
       <span><strong>Your Content</strong></span>
       <div class="video-nav-links">
         <%= link_to "All Videos", creator_listings_path %>
-        <%= link_to 'New Video', new_creator_listing_path,  {remote: true, 'data-toggle':  "modal", 'data-target': '#modal-window', render_layout: false} %>
+        <%= link_to 'New Video', new_creator_listing_path,  {remote: true, 'data-toggle':  "modal", render_layout: false} %>
       </div>
     </div>
     <div class="listings-column-list">
@@ -46,4 +46,7 @@
 </div>
 
 <div class="modal" id="video-modal" tabindex="-1" role="dialog" aria-hidden="true">
+</div>
+
+<div class="modal" id="listing-show-modal" tabindex="-1" role="dialog" aria-hidden="true">
 </div>
