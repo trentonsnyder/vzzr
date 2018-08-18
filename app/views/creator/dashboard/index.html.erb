@@ -18,7 +18,11 @@
               <span>0 Views</span>
               <span>0 Contracts</span>
             </div>
-            <button class="video-item-button">details</button>
+              <%= link_to creator_video_path(video.id), {remote: true, 'data-toggle':  "modal", render_layout: false} do %>
+                <button class="video-item-button">
+                  Details
+                </button>
+              <% end %>
           </div>
         </div>
       <% end %>
@@ -45,5 +49,5 @@
 <div class="modal" id="new-video-modal" tabindex="-1" role="dialog" aria-hidden="true">
 </div>
 
-<div class="modal" id="video-show-modal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal" id="show-video-modal" tabindex="-1" role="dialog" aria-hidden="true">
 </div>

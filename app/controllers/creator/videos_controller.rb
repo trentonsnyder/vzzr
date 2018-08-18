@@ -3,6 +3,13 @@ class Creator::VideosController < Creator::BaseController
     @videos = current_user.company.videos
   end
 
+  def show
+    @video = current_user.company.videos.find(params[:id])
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def new
     set_s3_direct_post(@video)
     @video = current_user.company.videos.new()

@@ -18,6 +18,7 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
+  padding: 0px 5px;
 }
 
 .video-title {
@@ -30,4 +31,39 @@
 
 .video-field {
   margin-bottom: 1rem;
+}
+
+.show-video-modal {
+  background-color: white;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.video-player-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.video-player {
+  width: 100%;
+  background-color: black;
+  max-height: 400px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.video-player-details {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+}
+
+.video-close {
+  position: absolute;
+  top: -5px;
+  right: 8px;
+  color: white;
 }

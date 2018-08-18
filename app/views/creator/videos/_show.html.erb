@@ -1,0 +1,17 @@
+<div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-content show-video-modal">
+    <div class="video-player-container">
+      <video class="video-player" poster="<%= @video.thumbnail %>" controls controlsList="nodownload">
+        <source src="<%= @video.url %>" type="video/mp4">
+      </video>
+      <div class="video-player-details">
+        <span><%= @video.name %></span>
+        <span><%= @video.description %></span>
+        <span>0 views</span>
+      </div>
+      <div class="video-close close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true"><strong>&times;</strong></span>
+      </div>
+    </div>
+  </div>
+</div>

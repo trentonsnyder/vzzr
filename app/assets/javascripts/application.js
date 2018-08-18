@@ -16,3 +16,9 @@
 //= require popper
 //= require bootstrap
 //= require_tree .
+
+$(document).ready(() => {
+  $('body').on('hidden.bs.modal', '.modal', function () {
+    $('video').trigger('pause');
+  });
+})
