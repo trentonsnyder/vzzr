@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       resources :messages, only: [:create]
     end
     resources :videos
+    resources :publishers, only: [:show]
   end
 
   namespace :publisher do

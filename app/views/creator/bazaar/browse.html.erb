@@ -12,12 +12,12 @@
             <span><%= pub.description %></span>
             <span>0 Views</span>
           </div>
-          <%= link_to "Details", creator_video_path(pub.id) %>
+          <%= link_to "Details", creator_publisher_path(pub.id), {remote: true, 'data-toggle':  "modal", render_layout: false} %>
         </div>
       <% end %>
     </div>
   </div>
 </div>
 
-<div class="modal" id="video-show-modal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal" id="publisher-show-modal" tabindex="-1" role="dialog" aria-hidden="true">
 </div>

@@ -4,7 +4,7 @@
       <span><strong>Your Content</strong></span>
       <div class="video-nav-links">
         <%= link_to "All Videos", creator_videos_path %>
-        <%= link_to 'New Video', new_creator_video_path,  {remote: true, 'data-toggle':  "modal", render_layout: false} %>
+        <%= link_to 'New Video', new_creator_video_path, {remote: true, 'data-toggle':  "modal", render_layout: false} %>
       </div>
     </div>
     <div class="videos-column-list">
@@ -14,7 +14,7 @@
           <div class="video-item">
             <div class="video-item-details">
               <span><strong><%= video.name %></strong></span>
-              <span><small>Genre</small></span>
+              <span><small><%= video.genre.name %></small></span>
               <span>0 Views</span>
               <span>0 Contracts</span>
             </div>
