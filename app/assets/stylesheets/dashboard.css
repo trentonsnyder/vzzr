@@ -5,7 +5,7 @@
   margin: 10px 0px;
 }
 
-.listings-column {
+.videos-column {
   width: 400px;
   background-color: #ccc;
   display: flex;
@@ -71,7 +71,7 @@
   padding: 5px;
 }
 
-.listings-column-list {
+.videos-column-list {
   overflow: auto;
 }
 

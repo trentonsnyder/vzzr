@@ -11,21 +11,21 @@
     </div>
     <div>
     <div class="modal-right-section">
-      <div class="listing-header">
+      <div class="video-header">
         <div>
-          <span class="listing-title"><strong>Creator Content</strong></span>
+          <span class="video-title"><strong>Creator Content</strong></span>
         </div>
         <div class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true"><strong>&times;</strong></span>
         </div>
       </div>
-      <div class="creator-listings">
-        <% @listings.each do |listing| %>
-          <div class="section-listing">
-            <img src="<%= listing.thumbnail %>" />
+      <div class="creator-videos">
+        <% @videos.each do |video| %>
+          <div class="section-video">
+            <img src="<%= video.thumbnail %>" />
             <div>
-              <span><%= listing.name %></span>
-              <span><%= listing.description %></span>
+              <span><%= video.name %></span>
+              <span><%= video.description %></span>
               <span>0 views</span>
             </div>
           </div>

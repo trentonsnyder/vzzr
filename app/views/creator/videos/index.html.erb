@@ -1,0 +1,10 @@
+<h3>videos index</h3>
+<%= link_to "New Video", new_creator_video_path %>
+
+<% @videos.each do |video| %>
+  <div>
+    <img src="<%= video.thumbnail %>" style="max-width: 200px"/>
+    <h2><%= video.name %></h2>
+    <p><%= video.description %></p>
+  </div>
+<% end %>

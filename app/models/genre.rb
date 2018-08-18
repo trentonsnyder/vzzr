@@ -1,8 +1,7 @@
 class Genre < ApplicationRecord
-  has_many :listings
+  has_many :videos
   
   validates :name,
     presence: true,
     uniqueness: true
-
 end

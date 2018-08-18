@@ -1,19 +1,19 @@
 <div class="dashboard-grid">
-  <div class="listings-column">
+  <div class="videos-column">
     <div class="video-nav">
       <span><strong>Your Content</strong></span>
       <div class="video-nav-links">
-        <%= link_to "All Videos", creator_listings_path %>
-        <%= link_to 'New Video', new_creator_listing_path,  {remote: true, 'data-toggle':  "modal", render_layout: false} %>
+        <%= link_to "All Videos", creator_videos_path %>
+        <%= link_to 'New Video', new_creator_video_path,  {remote: true, 'data-toggle':  "modal", render_layout: false} %>
       </div>
     </div>
-    <div class="listings-column-list">
-      <% @listings.each do |listing| %>
+    <div class="videos-column-list">
+      <% @videos.each do |video| %>
         <div class="video-item-container">
-          <img src="<%= listing.thumbnail %>"/>
+          <img src="<%= video.thumbnail %>"/>
           <div class="video-item">
             <div class="video-item-details">
-              <span><strong><%= listing.name %></strong></span>
+              <span><strong><%= video.name %></strong></span>
               <span><small>Genre</small></span>
               <span>0 Views</span>
               <span>0 Contracts</span>
@@ -42,11 +42,8 @@
   </div>
 </div>
 
-<div class="modal" id="listing-modal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal" id="new-video-modal" tabindex="-1" role="dialog" aria-hidden="true">
 </div>
 
-<div class="modal" id="video-modal" tabindex="-1" role="dialog" aria-hidden="true">
-</div>
-
-<div class="modal" id="listing-show-modal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal" id="video-show-modal" tabindex="-1" role="dialog" aria-hidden="true">
 </div>

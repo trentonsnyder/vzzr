@@ -1,5 +1,5 @@
 class Creator::DashboardController < Creator::BaseController
   def index
-    @listings = current_user.company.listings
+    @videos = current_user.company.videos
   end
 end

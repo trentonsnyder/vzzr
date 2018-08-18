@@ -47,7 +47,7 @@ end
 end
 
 count = 0
-1000.times do
+500.times do
   puts count if count % 100 == 0
   user1 = Company.where(kind: "creator").order("RANDOM()").first.users.first
   user2 = Company.where(kind: "publisher").order("RANDOM()").first.users.first

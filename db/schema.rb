@@ -29,16 +29,6 @@ ActiveRecord::Schema.define(version: 2018_08_07_042110) do
     t.string "name", null: false
   end
 
-  create_table "listings", force: :cascade do |t|
-    t.string "name", null: false
-    t.text "description", default: ""
-    t.string "thumbnail", default: ""
-    t.bigint "genre_id"
-    t.bigint "company_id"
-    t.index ["company_id"], name: "index_listings_on_company_id"
-    t.index ["genre_id"], name: "index_listings_on_genre_id"
-  end
-
   create_table "message_read_states", force: :cascade do |t|
     t.bigint "message_id"
     t.bigint "company_id"
@@ -86,9 +76,13 @@ ActiveRecord::Schema.define(version: 2018_08_07_042110) do
 
   create_table "videos", force: :cascade do |t|
     t.string "url", null: false
+    t.string "name", null: false
     t.string "thumbnail", default: ""
-    t.bigint "listing_id"
-    t.index ["listing_id"], name: "index_videos_on_listing_id"
+    t.text "description", default: ""
+    t.bigint "genre_id"
+    t.bigint "company_id"
+    t.index ["company_id"], name: "index_videos_on_company_id"
+    t.index ["genre_id"], name: "index_videos_on_genre_id"
   end
 
   create_table "views", force: :cascade do |t|
@@ -99,14 +93,13 @@ ActiveRecord::Schema.define(version: 2018_08_07_042110) do
     t.index ["video_id"], name: "index_views_on_video_id"
   end
 
-  add_foreign_key "listings", "companies"
-  add_foreign_key "listings", "genres"
   add_foreign_key "message_read_states", "companies"
   add_foreign_key "message_read_states", "messages"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
   add_foreign_key "participants", "companies"
   add_foreign_key "participants", "conversations"
-  add_foreign_key "videos", "listings"
+  add_foreign_key "videos", "companies"
+  add_foreign_key "videos", "genres"
   add_foreign_key "views", "videos"
 end

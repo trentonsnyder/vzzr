@@ -1,6 +1,6 @@
 class Company < ApplicationRecord
   has_many :users
-  has_many :listings
+  has_many :videos
 
   has_many :participants
   has_many :conversations, through: :participants

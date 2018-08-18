@@ -11,18 +11,13 @@ class CreateTheDatabase < ActiveRecord::Migration[5.2]
       t.string :name, null: false
     end
 
-    create_table :listings do |t|
-      t.string :name, null: false
-      t.text :description, default: ''
-      t.string :thumbnail, default: ''
-      t.belongs_to :genre, foreign_key: true
-      t.belongs_to :company, foreign_key: true
-    end
-
     create_table :videos do |t|
       t.string :url, null: false
+      t.string :name, null: false
       t.string :thumbnail, default: ''
-      t.belongs_to :listing, foreign_key: true
+      t.text :description, default: ''
+      t.belongs_to :genre, foreign_key: true
+      t.belongs_to :company, foreign_key: true
     end
     
     create_table :views do |t|

@@ -30,7 +30,7 @@
   flex-direction: column;
 }
 
-.section-listing {
+.section-video {
   display: flex;
   flex-direction: column;
   margin: 5px;
@@ -38,14 +38,14 @@
   background-color: white;
 }
 
-.section-listing > img {
+.section-video > img {
   width: 200px;
   max-height: 125px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
 
-.section-listing > div {
+.section-video > div {
   display: flex;
   flex-direction: column;
   padding: 5px;
@@ -57,7 +57,7 @@
   flex-direction: column;
 }
 
-.creator-listings {
+.creator-videos {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

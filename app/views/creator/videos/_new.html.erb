@@ -1,22 +1,29 @@
 <div class="modal-dialog modal-dialog-centered" role="document">
   <div class="modal-content">
-    <%= form_for(@video, url: creator_listing_videos_path, html: { class: 'directUpload', data: { 'form-data' => (@s3_direct_post.fields), 'url' => @s3_direct_post.url, 'host' => URI.parse(@s3_direct_post.url).host } }) do |f| %>
-      <div class="new-listing-form">
-        <div class="listing-header">
+    <%= form_for(@video, url: creator_videos_path, html: { class: 'directUpload', data: { 'form-data' => (@s3_direct_post.fields), 'url' => @s3_direct_post.url, 'host' => URI.parse(@s3_direct_post.url).host } }) do |f| %>
+      <div class="new-video-form">
+        <div class="video-header">
           <div>
-            <span class="listing-title">
-              <strong>Feature Details</strong>
-            </span>
+            <span class="video-title"><strong>Video Details</strong></span>
           </div>
           <div class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true"><strong>&times;</strong></span>
           </div>
         </div>
-        <div class="listing-field-video">
+        <div class="video-field">
+          <%= f.text_field :name, placeholder: 'name' %>
+        </div>
+        <div class="video-field">
+          <%= f.text_area :description, placeholder: 'description' %>
+        </div>
+        <div class="video-field">
+          <%= f.collection_select :genre_id, Genre.order(:name), :id, :name, {prompt: 'Genre'} %>
+        </div>
+        <div class="video-field">
           <%= f.label :thumbnail %>
           <%= f.file_field :thumbnail %>
         </div>
-        <div class="listing-field-video">
+        <div class="video-field">
           <%= f.label :url, "Video file" %>
           <%= f.file_field :url %>
         </div>
