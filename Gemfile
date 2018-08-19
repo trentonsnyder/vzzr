@@ -14,6 +14,8 @@ gem 'aws-sdk-s3', '~> 1'
 gem 'jquery-rails'
 gem 'bootstrap', '~> 4.1', '>= 4.1.3'
 
+gem 'rails_12factor'
+
 group :development, :test do
   gem 'faker', git: 'https://github.com/stympy/faker.git', branch: 'master'
   gem 'pry'
