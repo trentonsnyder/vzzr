@@ -28,7 +28,9 @@ $(document).ready(() => {
           html += '</div>'
           $("#convo-body").append( html );
           var objDiv = document.getElementById("convo-body");
-          objDiv.scrollTop = objDiv.scrollHeight;
+          if (objDiv) {
+            objDiv.scrollTop = objDiv.scrollHeight
+          }
         }
         var company_id = $("#chat-grid").data("company-id")
         var pickName = message.company_names.filter(co => co.id !== company_id).map(co => co.name).join(', ')

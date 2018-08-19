@@ -1,4 +1,6 @@
 $(document).ready(() => {
   var objDiv = document.getElementById("convo-body");
-  objDiv.scrollTop = objDiv.scrollHeight;
+  if (objDiv) {
+    objDiv.scrollTop = objDiv.scrollHeight
+  }
 })
