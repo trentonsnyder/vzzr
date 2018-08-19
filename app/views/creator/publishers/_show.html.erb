@@ -6,7 +6,9 @@
         <span><strong><%= @publisher.name %></strong></span>
         <span><%= @publisher.description %></span>
         <span>0 Views</span>
-        <button>Chat with them</button>
+        <%= link_to creator_path(@publisher.id) do %>
+          <button>Chat with them</button>
+        <% end %>
       </div>
     </div>
     <div>

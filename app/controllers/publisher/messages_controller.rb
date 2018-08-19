@@ -3,12 +3,15 @@ class Publisher::MessagesController < Publisher::BaseController
     @conversation = current_user.company.conversations.find(params[:conversation_id])
     @message = @conversation.messages.new(message_params)
     if @message.save
-      ids = @conversation.companies.ids - [current_user.company.id]
-      ids.each do |id|
+      ids = @conversation.companies.ids
+      company_names = ids.map { |id| {id: id, name:  Company.find(id).name} }
+      filtered_ids = ids - [current_user.company.id]
+      filtered_ids.each do |id|
         ActionCable.server.broadcast "company_#{id}_channel",
           { message: {
+            id: @message.id,
             body: @message.body,
-            company_chat_name: @message.company_chat_name(current_user.company),
+            company_names: company_names,
             conversation_id: @conversation.id,
             message_time: @message.message_time,
             direction: @message.direction(current_user),

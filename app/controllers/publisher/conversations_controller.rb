@@ -1,5 +1,40 @@
 class Publisher::ConversationsController < Publisher::BaseController
   def index
+    get_left_bar
+  end
+
+  def show
+    get_left_bar
+    message = Message.find(params[:id])
+    @conversation = current_user.company.conversations.find_by(id: message.conversation_id)
+    if @conversation.nil?
+      redirect_to creator_conversations_path
+    else
+      @message = @conversation.messages.new()
+      @company = @conversation.companies.where("companies.id != ?", current_user.company.id).first
+    end
+  end
+
+  def creator
+    get_left_bar
+    creator = Company.find(params[:id])
+    pub_convo_ids = creator.conversations.ids
+    cu_convo_ids = current_user.company.conversations.ids
+    found = pub_convo_ids & cu_convo_ids
+    @conversation = Conversation.find_by(id: found.first)
+    if @conversation.nil?
+      @conversation = Conversation.create()
+      @conversation.participants.create(company_id: current_user.company.id)
+      @conversation.participants.create(company_id: creator.id)
+    end
+    @message = @conversation.messages.new()
+    @company = @conversation.companies.where("companies.id != ?", current_user.company.id).first
+    render :show
+  end
+
+  private
+
+  def get_left_bar
     convo_ids = current_user.company.conversations.ids
     @messages = Message.includes(:conversation)
                         .where('messages.id IN (
@@ -12,17 +47,4 @@ class Publisher::ConversationsController < Publisher::BaseController
                         .order("created_at DESC", "id DESC")
   end
 
-  def show
-    message = Message.find(params[:id])
-    @conversation = current_user.company.conversations.find_by(id: message.conversation_id)
-    @message = @conversation.messages.new()
-    if @conversation.nil?
-      redirect_to publisher_conversations_path
-    else
-      @company = @conversation.companies.where("companies.id != ?", current_user.company.id).first
-      respond_to do |format|
-        format.js
-      end
-    end
-  end
 end

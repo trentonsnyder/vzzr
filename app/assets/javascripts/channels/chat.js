@@ -30,11 +30,14 @@ $(document).ready(() => {
           var objDiv = document.getElementById("convo-body");
           objDiv.scrollTop = objDiv.scrollHeight;
         }
-          var convoItem ='<div class="chat-item" id="chat-item-' + message.conversation_id + '" data-conversation-id="' + message.conversation_id + '">'
-          convoItem += '<a href="/' + message.to_kind + '/conversations/' + message.conversation_id + '" data-remote="true">'
-          convoItem += '<div><span><strong>' + message.company_chat_name + '</strong></span></div>'
-          convoItem += '<div><span>' + user.name + ':' + message.body + '</span></div>'
-          convoItem += '</a></div>'
+        var company_id = $("#chat-grid").data("company-id")
+        var pickName = message.company_names.filter(co => co.id !== company_id).map(co => co.name).join(', ')
+
+        var convoItem ='<div class="chat-item" id="chat-item-' + message.conversation_id + '" data-conversation-id="' + message.conversation_id + '">'
+        convoItem += '<a href="/' + message.to_kind + '/conversations/' + message.id + '" >'
+        convoItem += '<div><span><strong>' + pickName + '</strong></span></div>'
+        convoItem += '<div><span>' + user.name + ': ' + message.body + '</span></div>'
+        convoItem += '</a></div>'
         
         // user current for read/unread
         $("#chat-item-" + message.conversation_id).remove();

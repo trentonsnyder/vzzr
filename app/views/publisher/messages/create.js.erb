@@ -6,3 +6,6 @@ $("#conversation-overview").prepend("<%= escape_javascript(render 'item') %>");
 
 var objDiv = document.getElementById("convo-body");
 objDiv.scrollTop = objDiv.scrollHeight;
+
+var objInput = document.getElementById("convo-form-input");
+objInput.value = '';

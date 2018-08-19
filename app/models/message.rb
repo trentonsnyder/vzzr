@@ -2,7 +2,7 @@ class Message < ApplicationRecord
   belongs_to :conversation
   belongs_to :user
 
-  has_many :message_read_states
+  has_many :message_read_states, dependent: :destroy
 
   validates :body,
     presence: true
@@ -14,6 +14,10 @@ class Message < ApplicationRecord
   end
 
   def company_chat_name(user_company)
+    conversation.companies.where("companies.id != ?", user_company.id).first.name
+  end
+
+  def other_company_chat_name(user_company)
     conversation.companies.where("companies.id != ?", user_company.id).first.name
   end
 
