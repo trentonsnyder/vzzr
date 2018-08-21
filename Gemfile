@@ -16,6 +16,8 @@ gem 'bootstrap', '~> 4.1', '>= 4.1.3'
 gem 'redis'
 gem 'rails_12factor'
 gem 'faker', git: 'https://github.com/stympy/faker.git', branch: 'master'
+gem 'chartkick'
+gem 'groupdate'
 
 group :development, :test do
   gem 'pry'

@@ -7,8 +7,7 @@
 .new-video-form {
   padding: 12px;
   background-color: white;
-  border: 1px solid grey;
-  border-radius: 5px;
+  border-radius: 10px;
   box-shadow: 0px 1px 6px grey;
 }
 
@@ -35,24 +34,24 @@
 
 .show-video-modal {
   background-color: white;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .video-player-container {
   position: relative;
   display: flex;
   flex-direction: column;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .video-player {
   width: 100%;
   background-color: black;
   max-height: 400px;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .video-player-details {

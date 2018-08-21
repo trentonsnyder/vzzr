@@ -10,8 +10,8 @@
   display: flex;
   flex-direction: column;
   margin: 20px;
-  border-radius: 5px;
-  background-color: #ccc;
+  border-radius: 10px;
+  background-color: #F5F5F5;
   overflow: auto;
 }
 
@@ -27,7 +27,7 @@
   display: flex;
   flex-direction: column;
   background-color: white;
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 10px;
   margin: 0px 10px;
 }

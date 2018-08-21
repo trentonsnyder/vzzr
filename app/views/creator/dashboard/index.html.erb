@@ -1,7 +1,9 @@
 <div class="dashboard-grid">
   <div class="videos-column">
-    <div class="video-nav">
-      <span><strong>Your Content</strong></span>
+    <div class="column-header">
+      <span class="column-title">
+        <strong>Your Content</strong>
+      </span>
       <div class="video-nav-links">
         <%= link_to "All Videos", creator_videos_path %>
         <%= link_to 'New Video', new_creator_video_path, {remote: true, 'data-toggle':  "modal", render_layout: false} %>
@@ -19,7 +21,7 @@
               <span>0 Contracts</span>
             </div>
               <%= link_to creator_video_path(video.id), {remote: true, 'data-toggle':  "modal", render_layout: false} do %>
-                <button class="video-item-button">
+                <button class="button-primary video-item-button">
                   Details
                 </button>
               <% end %>
@@ -31,17 +33,65 @@
   <div class="bullshit-column">
     <div class="graph-row">
       <div class="viewership">
-        viewership
+        <div class="column-title">
+          <span>
+            <strong>Live Viewership</strong>
+          </span>
+        </div>
+        <%= area_chart @viewership.group_by { |u| u[:created_at] }.map { |k,v| [k, v[0][:views]] },
+          id: "users-chart", colors: ["#EC4D77"], points: false, defer: true
+        %>
       </div>
       <div class="revenue">
-        revenue
+        <%= pie_chart(
+          {"PPV": 700, "Advertisements": 3015, "Donations": 1607},
+          id: "fuck-all", legend: false, defer: true, colors: ["#EC4D77", "#6F3291", "#9B9B9B"]
+        )%>
+        <div class="revenue-title-container">
+          <div class="monetization-title"><span><strong>Monetization</strong></span></div>
+          <div class="money-title"><span><strong>$12,357</strong></span></div>
+        </div>
       </div>
     </div>
     <div class="statistics">
-      statistics
+      <div class="stat">
+        <div class="stat-top">
+          <span><strong>132</strong></span>
+        </div>
+        <div class="stat-bottom">
+          <span><strong>Total Subscribers</strong></span>
+        </div>
+      </div>
+      <div class="stat">
+        <div class="stat-top">
+          <span><strong>$ 456.60</strong></span>
+        </div>
+        <div class="stat-bottom">
+          <span><strong>Today's Revenue</strong></span>
+        </div>
+      </div>
+      <div class="stat">
+        <div class="stat-top">
+          <span><strong>16:45:36</strong></span>
+        </div>
+        <div class="stat-bottom">
+          <span><strong>Live Uptime</strong></span>
+        </div>
+      </div>
     </div>
-    <div class="contracts">
-      contracts
+    <div class="contracts-container">
+      <div class="contracts">
+        <% @publishers.each do |pub| %>
+          <div class="contract-item">
+            <img src="<%= pub.cover_image_url %>" />
+            <div class="contract-item-details">
+              <span><strong><%= pub.name %></strong></span>
+              <span><%= pub.description %></span>
+            </div>
+            <%= link_to "Details", creator_publisher_path(pub.id), {remote: true, 'data-toggle':  "modal", render_layout: false} %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
