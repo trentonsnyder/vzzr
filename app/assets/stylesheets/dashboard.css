@@ -3,6 +3,7 @@
   flex-direction: row;
   flex: 1;
   margin: 10px 0px;
+  overflow-x: auto;
 }
 
 .videos-column {
@@ -13,12 +14,14 @@
   display: flex;
   flex-direction: column;
   margin: 0px 10px;
+  flex: none;
 }
 
 .bullshit-column {
   display: flex;
   flex-direction: column;
   flex: 1;
+  overflow-x: auto;
 }
 
 .bullshit-column {
