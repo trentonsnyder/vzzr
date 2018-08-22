@@ -3,7 +3,11 @@
     <span class="devise-logo">LOGO</span>
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <div class="field">
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "email" %>
+        <%= f.text_field :name, autofocus: true, placeholder: "name" %>
+      </div>
+
+      <div class="field">
+        <%= f.email_field :email, autocomplete: "email", placeholder: "email" %>
       </div>
 
       <div class="field">
@@ -14,13 +18,23 @@
         <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "password confirmation" %>
       </div>
 
-      <div class="devise-form-links">
-        <div class="actions">
-          <%= f.submit "Sign Up" %>
+      <%= f.fields_for :company do |company| %>
+        <div class="radio-sign-up">
+          <div>
+            <%= company.label :kind, "Creator", value: "true" %>
+            <%= company.radio_button :kind, true, checked: true %>
+          </div>
+          <div>
+            <%= company.label :kind, "Publisher", value: "false" %>
+            <%= company.radio_button :kind, false %>
+          </div>
         </div>
+      <% end %>
+
+      <div class="devise-form-links">
+        <%= f.submit "Sign Up", class: "button-primary" %>
         <%= render "devise/shared/links" %>
       </div>
     <% end %>
-
   </div>
 </div>

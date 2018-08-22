@@ -11,11 +11,11 @@
   </div>
   <div class="dropdown">
     <div class="drop-btn">
-      <%= current_user.name %>
+      <%= current_user.company.name %>
     </div>
     <div class="dropdown-content">
       <%= link_to "Profile", root_path %>
-      <%= link_to "logout", destroy_user_session_path, method: :delete %>
+      <%= link_to "Logout", destroy_user_session_path, method: :delete %>
     </div>
   </div> 
 </nav>

@@ -68,9 +68,12 @@ p {
 /* Links
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 a {
-  color: #1EAEDB; }
+  color: #6F3291;
+  text-decoration: none;
+}
 a:hover {
-  color: #0FA0CE; }
+  text-decoration: underline;
+}
 
 
 /* Buttons
@@ -82,7 +85,7 @@ input[type="reset"],
 input[type="button"] {
   display: inline-block;
   /* height: 38px; */
-  padding: 0 30px;
+  padding: 3px 30px;
   background-color: #EC4D77;
   color: white;
   text-align: center;
@@ -128,7 +131,29 @@ button.button-primary:focus,
 input[type="submit"].button-primary:focus,
 input[type="reset"].button-primary:focus,
 input[type="button"].button-primary:focus {
-  color: white; }
+  color: white;
+}
+
+.button.button-secondary,
+button.button-secondary,
+input[type="submit"].button-secondary,
+input[type="reset"].button-secondary,
+input[type="button"].button-secondary {
+  color: #EC4D77;
+  border-radius: 25px;
+  background-color: white;
+}
+.button.button-secondary:hover,
+button.button-secondary:hover,
+input[type="submit"].button-secondary:hover,
+input[type="reset"].button-secondary:hover,
+input[type="button"].button-secondary:hover,
+.button.button-secondary:focus,
+button.button-secondary:focus,
+input[type="submit"].button-secondary:focus,
+input[type="reset"].button-secondary:focus,
+input[type="button"].button-secondary:focus {
+  color: #EC4D77; }
 
 
 /* Forms
@@ -174,7 +199,7 @@ input[type="url"]:focus,
 input[type="password"]:focus,
 textarea:focus,
 select:focus {
-  border: 1px solid #33C3F0;
+  border: 1px solid #6F3291;
   outline: 0; }
 label,
 legend {

@@ -38,7 +38,7 @@
       <%= form_for(@message, url: publisher_conversation_messages_path(@conversation.id), remote: true, html: {class: "big-form"} ) do |f| %>
         <%= f.text_area :body, placeholder: 'your message', id: "convo-form-input" %>
         <div> 
-          <%= f.submit 'send' %>
+          <%= f.submit 'send', class: "button-primary"  %>
         </div>
       <% end %>
     </div>

@@ -12,7 +12,9 @@
             <span><%= creator.description %></span>
             <span>0 Views</span>
           </div>
-          <%= link_to "Details", publisher_creator_path(creator.id), {remote: true, 'data-toggle':  "modal", render_layout: false} %>
+          <%= link_to publisher_creator_path(creator.id), {remote: true, 'data-toggle':  "modal", render_layout: false} do %>
+            <button class="button-primary">Details</button>
+          <% end %>
         </div>
       <% end %>
     </div>

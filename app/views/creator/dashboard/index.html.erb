@@ -4,10 +4,11 @@
       <span class="column-title">
         <strong>Your Content</strong>
       </span>
-      <div class="video-nav-links">
-        <%= link_to "All Videos", creator_videos_path %>
-        <%= link_to 'New Video', new_creator_video_path, {remote: true, 'data-toggle':  "modal", render_layout: false} %>
-      </div>
+      <%= link_to new_creator_video_path, {remote: true, 'data-toggle':  "modal", render_layout: false} do %>
+        <button class="button-secondary">
+          New Video
+        </button>
+      <% end %>
     </div>
     <div class="videos-column-list">
       <% @videos.each do |video| %>
@@ -21,9 +22,7 @@
               <span>0 Contracts</span>
             </div>
               <%= link_to creator_video_path(video.id), {remote: true, 'data-toggle':  "modal", render_layout: false} do %>
-                <button class="button-primary video-item-button">
-                  Details
-                </button>
+                <button class="button-primary video-item-button">Details</button>
               <% end %>
           </div>
         </div>
@@ -88,7 +87,9 @@
               <span><strong><%= pub.name %></strong></span>
               <span><%= pub.description %></span>
             </div>
-            <%= link_to "Details", creator_publisher_path(pub.id), {remote: true, 'data-toggle':  "modal", render_layout: false} %>
+            <%= link_to creator_publisher_path(pub.id), {remote: true, 'data-toggle':  "modal", render_layout: false} do %>
+              <button class="button-primary">Details</button>
+            <% end %>
           </div>
         <% end %>
       </div>
