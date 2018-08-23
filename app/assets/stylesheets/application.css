@@ -56,4 +56,5 @@
 .content-container {
   flex: 1 1 auto;
   display: flex;
+  padding: 15px 25px;
 }
