@@ -91,3 +91,17 @@
   display: block;
   padding-right: 10px;
 }
+
+#chat-link {
+  position: relative;
+}
+
+#chat-bubble::after {
+  position: absolute;
+  content: "";
+  top: 5px;
+  right: 20px;
+  padding: 3px;
+  background-color: white;
+  border-radius: 50%;
+}

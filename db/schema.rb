@@ -29,18 +29,11 @@ ActiveRecord::Schema.define(version: 2018_08_07_042110) do
     t.string "name", null: false
   end
 
-  create_table "message_read_states", force: :cascade do |t|
-    t.bigint "message_id"
-    t.bigint "company_id"
-    t.datetime "read_date"
-    t.index ["company_id"], name: "index_message_read_states_on_company_id"
-    t.index ["message_id"], name: "index_message_read_states_on_message_id"
-  end
-
   create_table "messages", force: :cascade do |t|
     t.text "body", null: false
     t.bigint "conversation_id"
     t.bigint "user_id"
+    t.boolean "read", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["conversation_id"], name: "index_messages_on_conversation_id"
@@ -93,8 +86,6 @@ ActiveRecord::Schema.define(version: 2018_08_07_042110) do
     t.index ["video_id"], name: "index_views_on_video_id"
   end
 
-  add_foreign_key "message_read_states", "companies"
-  add_foreign_key "message_read_states", "messages"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
   add_foreign_key "participants", "companies"

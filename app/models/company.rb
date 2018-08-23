@@ -5,8 +5,6 @@ class Company < ApplicationRecord
   has_many :participants
   has_many :conversations, through: :participants
 
-  has_many :message_read_states
-
   validates :kind,
     inclusion: { in: ['creator',  'publisher'] }
 

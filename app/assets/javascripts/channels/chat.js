@@ -2,7 +2,7 @@ $(document).ready(() => {
   if ($('meta[name=action-cable-url]').length) {
     App.chat = App.cable.subscriptions.create({
       channel: "ChatChannel",
-      company_id: $("#chat-grid").data("company-id")
+      company_id: $("#the-app").data("company-id")
     }, {
       connected: function() {
         // Called when the subscription is ready for use on the server

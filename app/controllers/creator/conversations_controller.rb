@@ -12,6 +12,7 @@ class Creator::ConversationsController < Creator::BaseController
     else
       @message = @conversation.messages.new()
       @company = @conversation.companies.where("companies.id != ?", current_user.company.id).first
+      Message.all.where('user_id NOT IN (?) AND conversation_id = ?', current_user.company.users.ids, @conversation.id).update_all(read: true)
     end
   end
 

@@ -20,10 +20,12 @@
         <% else %>
           <%= render 'shared/creator_navbar' %>
         <% end %>
-      <% end %>
-      <div class="content-container">
+        <div id="the-app" class="content-container" data-company-id="<%= current_user.company.id %>">
+          <%= yield %>
+        </div>
+      <% else %>
         <%= yield %>
-      </div>
+      <% end %>
     </div>
   </body>
 </html>

@@ -33,18 +33,13 @@ class CreateTheDatabase < ActiveRecord::Migration[5.2]
       t.text :body, null: false
       t.belongs_to :conversation, foreign_key: true
       t.belongs_to :user, foreign_key: true
+      t.boolean :read, default: false
       t.timestamps
     end
 
     create_table :participants do |t|
       t.belongs_to :conversation, foreign_key: true
       t.belongs_to :company, foreign_key: true
-    end
-
-    create_table :message_read_states do |t|
-      t.belongs_to :message, foreign_key: true
-      t.belongs_to :company, foreign_key: true
-      t.datetime :read_date
     end
   end
 end
