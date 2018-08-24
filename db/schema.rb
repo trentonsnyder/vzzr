@@ -33,9 +33,11 @@ ActiveRecord::Schema.define(version: 2018_08_07_042110) do
     t.text "body", null: false
     t.bigint "conversation_id"
     t.bigint "user_id"
+    t.bigint "company_id"
     t.boolean "read", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_messages_on_company_id"
     t.index ["conversation_id"], name: "index_messages_on_conversation_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
@@ -86,6 +88,7 @@ ActiveRecord::Schema.define(version: 2018_08_07_042110) do
     t.index ["video_id"], name: "index_views_on_video_id"
   end
 
+  add_foreign_key "messages", "companies"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
   add_foreign_key "participants", "companies"

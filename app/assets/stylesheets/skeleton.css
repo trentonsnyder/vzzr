@@ -87,6 +87,7 @@ input[type="button"] {
   /* height: 38px; */
   padding: 3px 30px;
   background-color: #EC4D77;
+  border-color: #EC4D77;
   color: white;
   text-align: center;
   font-size: 16px;

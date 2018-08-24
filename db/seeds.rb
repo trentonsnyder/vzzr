@@ -26,7 +26,7 @@ end
 
 def make_message(from_user, to_user)
   to_company = to_user.company
-  message = { user_id: from_user.id, body: Faker::Seinfeld.quote }
+  message = { user_id: from_user.id, body: Faker::Seinfeld.quote, company_id: from_user.company.id }
   convo_ids = from_user.company.conversations.ids
 
   convo = to_company.conversations.where("conversations.id IN (?)", convo_ids).first

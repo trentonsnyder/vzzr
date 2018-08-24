@@ -5,8 +5,7 @@ class Creator::ConversationsController < Creator::BaseController
 
   def show
     get_left_bar
-    message = Message.find(params[:id])
-    @conversation = current_user.company.conversations.find_by(id: message.conversation_id)
+    @conversation = current_user.company.conversations.find_by(id: params[:id])
     if @conversation.nil?
       redirect_to creator_conversations_path
     else
@@ -30,7 +29,7 @@ class Creator::ConversationsController < Creator::BaseController
     end
     @message = @conversation.messages.new()
     @company = @conversation.companies.where("companies.id != ?", current_user.company.id).first
-    render :show
+    redirect_to creator_conversation_path(@conversation.messages.first.id)
   end
 
   private
@@ -46,6 +45,7 @@ class Creator::ConversationsController < Creator::BaseController
                             GROUP BY messages.conversation_id
                           )', convo_ids)
                         .order("created_at DESC", "id DESC")
+                        # .sort_by { |a| a.conversation_unread ? 0: 1 }
   end
 
 end

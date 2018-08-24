@@ -1,0 +1,29 @@
+  <div class="conversation-column">
+    <div class="column-header">
+      <span class="column-title"><strong>Messages</strong></span>
+    </div>
+    <div class="conversation-content" id="conversation-overview">
+      <% messages.includes(user: :company).each do |message| %>
+        <%= link_to creator_conversation_path(message.conversation_id), id: "chat-item-#{message.conversation_id}" do %>
+          <div class="chat-item" data-conversation-id="<%= message.id %>">
+            <img src="<%= message.user.company.cover_image_url %>" />
+            <div class="chat-item-details">
+              <div>
+                <span>
+                  <strong><%= message.company_chat_name(current_user.company) %></strong>
+                </span>
+              </div>
+              <div>
+                <span class="chat-item-text">
+                  <%= message.user.name %>: <%= message.body%>
+                </span>
+              </div>
+            </div>
+            <% if message.conversation_unread(current_user) %>
+              <span class="chat-item-unread"></span>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
