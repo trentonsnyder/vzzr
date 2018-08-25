@@ -139,13 +139,15 @@ font-size: 20px;
   display: flex;
   background-color: white;
   flex-direction: row;
-  border-radius: 510x;
+  border-radius: 10px;
 }
 
 .video-item-container > img {
   max-width: 200px;
   width: 50%;
   height: 200px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 
 .video-item-details {
@@ -155,7 +157,7 @@ font-size: 20px;
 
 .video-item-button {
   align-self: center;
-  width: 80%;
+  width: 100%;
 }
 
 .video-item {
@@ -164,6 +166,20 @@ font-size: 20px;
   padding: 10px;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.video-item-details > span.purple {
+  color: #6F3291;
+  font-size: 16px;
+}
+
+.video-item-details > span.grey {
+  color: #9B9B9B;
+  font-size: 12px;
+}
+.video-item-details > span.pink {
+  color: #EC4D77;
+  font-size: 14px;
 }
 
 
@@ -192,17 +208,27 @@ font-size: 20px;
   flex-direction: column;
   background-color: white;
   border-radius: 10px;
-  padding: 10px;
   margin: 0px 10px;
 }
 
 .contract-item > img {
   width: 250px;
   height: 150px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .contract-item-details {
   display: flex;
   flex: 1;
   flex-direction: column;
+  padding: 5px 8px 0px 8px;
+}
+
+.video-card-button {
+  width: 100%;
+}
+
+.card-item-button-container {
+  padding: 8px 8px;
 }

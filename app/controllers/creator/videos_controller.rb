@@ -24,7 +24,7 @@ class Creator::VideosController < Creator::BaseController
     if @video.save
       redirect_to creator_dashboard_path
     else
-      render :new
+      redirect_to creator_dashboard_path
     end
   end
 

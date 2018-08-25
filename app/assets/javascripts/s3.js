@@ -4,7 +4,7 @@ S3 = {
       var fileInput    = $(elem);
       var form         = $(fileInput.parents('form:first'));
       var submitButton = form.find('input[type="submit"]');
-      var progressBar  = $("<div class='bar'>Waiting</div>");
+      var progressBar  = $("<div class='bar'>Waiting...</div>");
       var barContainer = $("<div class='progress'></div>").append(progressBar);
       fileInput.after(barContainer);
       fileInput.fileupload({
@@ -24,9 +24,11 @@ S3 = {
           submitButton.prop('disabled', true);
   
           progressBar.
-            css('background', 'green').
+            css('background', '#6F3291').
             css('display', 'block').
             css('width', '0%').
+            css('border-radius', '10px').
+            css('color', '#9B9B9B').
             text("Loading...");
         },
         done: function(e, data) {

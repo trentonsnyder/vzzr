@@ -7,8 +7,9 @@
   background-color: black;
 }
 
-.navbar > .logo {
-  width: 200px;
+.navbar > .logo > img {
+  max-height: 25px;
+  margin: 0px 12px;
   text-align: center;
 }
 

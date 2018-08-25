@@ -46,6 +46,8 @@ $(document).ready(() => {
         var chatItem = $('.chat-item[data-conversation-id="' + id + '"]')
         if (chatItem) {
           chatItem.addClass('current');
+        } else {
+          // add a bubble to the thing
         }
       }
     });

@@ -19,11 +19,11 @@
         <div class="video-field">
           <%= f.collection_select :genre_id, Genre.order(:name), :id, :name, {prompt: 'Genre'} %>
         </div>
-        <div class="video-field">
+        <div class="video-field file-field">
           <%= f.label :thumbnail %>
           <%= f.file_field :thumbnail %>
         </div>
-        <div class="video-field">
+        <div class="video-field file-field">
           <%= f.label :url, "Video file" %>
           <%= f.file_field :url %>
         </div>

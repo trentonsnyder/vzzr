@@ -6,7 +6,7 @@
       </span>
       <%= link_to new_creator_video_path, {remote: true, 'data-toggle':  "modal", render_layout: false} do %>
         <button class="button-secondary">
-          New Video
+          NEW VIDEO
         </button>
       <% end %>
     </div>
@@ -16,13 +16,13 @@
           <img src="<%= video.thumbnail %>"/>
           <div class="video-item">
             <div class="video-item-details">
-              <span><strong><%= video.name %></strong></span>
-              <span><small><%= video.genre.name %></small></span>
-              <span>0 Views</span>
-              <span>0 Contracts</span>
+              <span class="purple"><strong><%= video.name %></strong></span>
+              <span class="grey"><small><%= video.genre.name %></small></span>
+              <span class="pink">0 Views</span>
+              <span class="pink">0 Contracts</span>
             </div>
               <%= link_to creator_video_path(video.id), {remote: true, 'data-toggle':  "modal", render_layout: false} do %>
-                <button class="button-primary video-item-button">Details</button>
+                <button class="button-primary video-item-button">DETAILS</button>
               <% end %>
           </div>
         </div>
@@ -84,12 +84,14 @@
           <div class="contract-item">
             <img src="<%= pub.cover_image_url %>" />
             <div class="contract-item-details">
-              <span><strong><%= pub.name %></strong></span>
-              <span><%= pub.description %></span>
+              <span style="color: #6F3291; font-size: 16px;"><strong><%= pub.name %></strong></span>
+              <span style="color: ##9B9B9B; font-size: 12px;"><%= pub.description %></span>
             </div>
-            <%= link_to creator_publisher_path(pub.id), {remote: true, 'data-toggle':  "modal", render_layout: false} do %>
-              <button class="button-primary">Details</button>
-            <% end %>
+            <div class="card-item-button-container">
+              <%= link_to creator_publisher_path(pub.id), {remote: true, 'data-toggle':  "modal", render_layout: false} do %>
+                <button class="button-primary video-card-button">DETAILS</button>
+              <% end %>
+            </div>
           </div>
         <% end %>
       </div>

@@ -5,9 +5,10 @@
         <source src="<%= @video.url %>" type="video/mp4">
       </video>
       <div class="video-player-details">
-        <span><%= @video.name %></span>
-        <span><%= @video.description %></span>
-        <span>0 views</span>
+        <span style="color: #6F3291; font-size: 20px;"><%= @video.name %></span>
+        <span style="color: #9B9B9B; font-size: 16px;"><%= @video.description %></span>
+        <span style="color: #EC4D77; font-size: 12px;">0 views</span>
+        <span style="color: #EC4D77; font-size: 12px;"><%= @video.genre.name %></span>
       </div>
       <div class="video-close close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true"><strong>&times;</strong></span>

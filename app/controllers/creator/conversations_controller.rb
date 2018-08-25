@@ -29,7 +29,7 @@ class Creator::ConversationsController < Creator::BaseController
     end
     @message = @conversation.messages.new()
     @company = @conversation.companies.where("companies.id != ?", current_user.company.id).first
-    redirect_to creator_conversation_path(@conversation.messages.first.id)
+    redirect_to creator_conversation_path(@conversation.messages.first.conversation_id)
   end
 
   private
