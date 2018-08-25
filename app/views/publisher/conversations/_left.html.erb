@@ -4,7 +4,7 @@
   </div>
   <div class="conversation-content" id="conversation-overview">
     <% messages.includes(user: :company).each do |message| %>
-      <%= link_to creator_conversation_path(message.conversation_id), id: "chat-item-#{message.conversation_id}" do %>
+      <%= link_to publisher_conversation_path(message.conversation_id), id: "chat-item-#{message.conversation_id}" do %>
         <div class="chat-item" data-conversation-id="<%= message.conversation_id %>">
           <img src="<%= message.user.company.cover_image_url %>" />
           <div class="chat-item-details">

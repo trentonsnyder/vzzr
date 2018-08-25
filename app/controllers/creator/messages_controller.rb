@@ -4,17 +4,18 @@ class Creator::MessagesController < Creator::BaseController
     @message = @conversation.messages.new(message_params)
     if @message.save
       ids = @conversation.companies.ids
-      filtered_ids = ids -  [current_user.company.id]
+      filtered_ids = ids - [current_user.company.id]
       filtered_ids.each do |id|
         ActionCable.server.broadcast "company_#{id}_channel",
           { message: {
               id: @message.id,
               body: @message.body,
-              company_name: @message.company.id,
+              company_name: @message.company.name,
               conversation_id: @conversation.id,
               message_time: @message.message_time,
+              cover_image_url: current_user.company.cover_image_url,
               to_kind: "publisher"
-            }, 
+            },
             user: current_user
           }
       end

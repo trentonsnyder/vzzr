@@ -45,8 +45,5 @@ class Creator::ConversationsController < Creator::BaseController
                             GROUP BY messages.conversation_id
                           )', convo_ids)
                         .order("created_at DESC", "id DESC")
-                        # .sort_by { |a| a.conversation_unread ? 0: 1 }
   end
-
 end
-

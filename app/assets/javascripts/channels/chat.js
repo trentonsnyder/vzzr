@@ -15,15 +15,10 @@ $(document).ready(() => {
   
       received: function(data) {
         var message = data.message
-        var user = data.user
-        var current = false
         if (message.conversation_id == $("#convo-body").data("conversationId")) {
-          current = true
           var html = '<div>'
           html += '<div class="convo-item-container inbound">'
-          html += '<small>' + user.name + '</small>'
           html += '<div class="convo-item-bubble inbound">' + message.body + '</div>'
-          html += '<span><small>' + message.message_time +'</small></span>'
           html += '</div>'
           html += '</div>'
           $("#convo-body").append( html );
@@ -32,25 +27,26 @@ $(document).ready(() => {
             objDiv.scrollTop = objDiv.scrollHeight
           }
         }
-        var company_id = $("#chat-grid").data("company-id")
-        var pickName = message.company_names.filter(co => co.id !== company_id).map(co => co.name).join(', ')
-
-        // var convoItem ='<div class="chat-item.current" id="chat-item-' + message.conversation_id + '" data-conversation-id="' + message.conversation_id + '">'
-        // convoItem += '<a href="/' + message.to_kind + '/conversations/' + message.id + '" >'
-        // convoItem += '<div><span><strong>' + pickName + '</strong></span></div>'
-        // convoItem += '<div><span>' + user.name + ': ' + message.body + '</span></div>'
-        // convoItem += '</a></div>'
-        var convoItem = '<a id="chat-item-link-' + message.conversation_id + 'href="/' + message.to_kind + '/conversations/' + message.conversation_id + '" >'
-        convoItem += '<div class="chat-item ' + current ? "current" : "" + '" data-conversation-id="' + message.id + '">'
+        var convoItem = '<a id="chat-item-' + message.conversation_id + '" href="/' + message.to_kind + '/conversations/' + message.conversation_id + '" >'
+        convoItem += '<div class="chat-item " data-conversation-id="' + message.conversation_id + '">'
         convoItem += '<img src="' + message.cover_image_url + '" />'
         convoItem += '<div class="chat-item-details">'
-        convoItem += '<div><span><strong>' + pickName + '</strong></span></div>'
-        convoItem += '<div><span class="chat-item-text">' + message.user.name + ': ' + message.body + '</span></div></div>'
+        convoItem += '<div><span><strong>' + message.company_name + '</strong></span></div>'
+        convoItem += '<div><span class="chat-item-text">' + data.user.name + ': ' + message.body + '</span></div></div>'
         convoItem += '</div></a>'
+
+        $("#chat-link").append('<span id="chat-bubble"></span>');
         
-        $("#chat-item-link-" + message.conversation_id).remove();
+        $("#chat-item-" + message.conversation_id).remove();
 
         $("#conversation-overview").prepend(convoItem)
+        var url = window.location.pathname
+        var stuff = url.split('/');
+        var id = stuff[stuff.length-1]
+        var chatItem = $('.chat-item[data-conversation-id="' + id + '"]')
+        if (chatItem) {
+          chatItem.addClass('current');
+        }
       }
     });
   }

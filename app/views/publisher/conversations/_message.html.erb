@@ -1,0 +1,9 @@
+<% @conversation.messages.order('created_at', 'id').each do |message| %>
+  <div>
+    <div class="convo-item-container <%= message.direction(current_user) %>">
+      <div class="convo-item-bubble <%= message.direction(current_user) %>">
+        <%= message.body %>
+      </div>
+    </div>
+  </div>
+<% end %>

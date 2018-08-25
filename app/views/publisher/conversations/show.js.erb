@@ -1,4 +1,4 @@
-$("#chat-window").html("<%= escape_javascript(render 'show') %>");
+$("#chat-body").html("<%= escape_javascript(render 'message') %>");
 $("#chat-details").html("<%= escape_javascript(render 'details') %>");
 var objDiv = document.getElementById("convo-body");
 if (objDiv) {

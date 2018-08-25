@@ -6,7 +6,14 @@
   </div>
   <div class="navbar-links">
     <%= link_to "Dashboard", root_path %>
-    <%= link_to "Chat", publisher_conversations_path %>
+    <%= link_to publisher_conversations_path do %>
+      <div id="chat-link">
+        <span>Chat</span>
+        <% if @unread.present? %>
+          <span id="chat-bubble"></span>
+        <% end %>
+      </div>
+    <% end %>
     <%= link_to "Bazaar", publisher_bazaar_path %>
   </div>
   <div class="dropdown">
