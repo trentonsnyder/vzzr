@@ -1,6 +1,8 @@
 <div class="devise-view">
   <div class="devise-form">
-    <span class="devise-logo">LOGO</span>
+    <div class="logo">
+      <img src="/logo.png" alt="LOGO" />
+    </div>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field">
         <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'email' %>
@@ -11,7 +13,7 @@
       </div>
 
       <div class="devise-form-links">
-        <%= f.submit "Log in", class: "button-primary" %>
+        <%= f.submit "LOG IN", class: "button-primary" %>
         <%= render "devise/shared/links" %>
       </div>
     <% end %>

@@ -28,8 +28,8 @@ class Publisher::ConversationsController < Publisher::BaseController
       @conversation.participants.create(company_id: creator.id)
     end
     @message = @conversation.messages.new()
-    @company = @conversation.companies.where("companies.id != ?", current_user.company.conversation_id).first
-    render :show
+    @company = @conversation.companies.where("companies.id != ?", current_user.company.id).first
+    redirect_to publisher_conversation_path(@conversation.messages.first.conversation_id)
   end
 
   private

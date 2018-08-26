@@ -27,6 +27,7 @@ Rails.application.routes.draw do
       resources :messages, only: [:create]
     end
     get 'conversations/creator/:id', to: "conversations#creator"
+    resources :videos
   end
 
   get '404', to: 'application#render_404'

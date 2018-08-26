@@ -1,0 +1,102 @@
+<div class="dashboard-grid">
+  <div class="videos-column">
+    <div class="column-header">
+      <span class="column-title">
+        <strong>Your Content</strong>
+      </span>
+    </div>
+    <div class="videos-column-list">
+      <% @videos.each do |video| %>
+        <div class="video-item-container">
+          <img src="<%= video.thumbnail %>"/>
+          <div class="video-item">
+            <div class="video-item-details">
+              <span class="purple"><strong><%= video.name %></strong></span>
+              <span class="grey"><small><%= video.genre.name %></small></span>
+              <span class="pink">0 Views</span>
+              <span class="pink">0 Revenue</span>
+            </div>
+            <%= link_to publisher_video_path(video.id), {remote: true, 'data-toggle':  "modal", render_layout: false} do %>
+              <button class="button-primary video-item-button">DETAILS</button>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="bullshit-column">
+    <div class="graph-row">
+      <div class="viewership">
+        <div class="column-title">
+          <span>
+            <strong>Live Viewership</strong>
+          </span>
+        </div>
+        <%= area_chart @viewership.group_by { |u| u[:created_at] }.map { |k,v| [k, v[0][:views]] },
+          id: "users-chart", colors: ["#EC4D77"], points: false, defer: true
+        %>
+      </div>
+      <div class="revenue">
+        <%= pie_chart(
+          {"PPV": 700, "Advertisements": 3015, "Donations": 1607},
+          id: "fuck-all", legend: false, defer: true, colors: ["#EC4D77", "#6F3291", "#9B9B9B"], height: "80%", width: "50%"
+        )%>
+        <div class="revenue-title-container">
+          <div class="monetization-title"><span><strong>Monetization</strong></span></div>
+          <div class="money-title"><span><strong>$12,357</strong></span></div>
+        </div>
+      </div>
+    </div>
+    <div class="statistics">
+      <div class="stat">
+        <div class="stat-top">
+          <span><strong>132</strong></span>
+        </div>
+        <div class="stat-bottom">
+          <span><strong>Total Subscribers</strong></span>
+        </div>
+      </div>
+      <div class="stat">
+        <div class="stat-top">
+          <span><strong>$ 456.60</strong></span>
+        </div>
+        <div class="stat-bottom">
+          <span><strong>Today's Revenue</strong></span>
+        </div>
+      </div>
+      <div class="stat">
+        <div class="stat-top">
+          <span><strong>16:45:36</strong></span>
+        </div>
+        <div class="stat-bottom">
+          <span><strong>Live Uptime</strong></span>
+        </div>
+      </div>
+    </div>
+    <div class="contracts-container">
+      <span style="margin-left: 15px; color: #6F3291;">Ongoing Contracts</span>
+      <div class="contracts">
+        <% @publishers.each do |pub| %>
+          <div class="contract-item">
+            <img src="<%= pub.cover_image_url %>" />
+            <div class="contract-item-details">
+              <span style="color: #6F3291; font-size: 16px;"><strong><%= pub.name %></strong></span>
+              <span style="color: ##9B9B9B; font-size: 12px;"><%= pub.description %></span>
+            </div>
+            <div class="card-item-button-container">
+              <%= link_to publisher_creator_path(pub.id), {remote: true, 'data-toggle':  "modal", render_layout: false} do %>
+                <button class="button-primary video-card-button">DETAILS</button>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="show-video-modal" tabindex="-1" role="dialog" aria-hidden="true">
+</div>
+
+<div class="modal" id="creator-show-modal" tabindex="-1" role="dialog" aria-hidden="true">
+</div>
