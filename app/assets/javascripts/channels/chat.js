@@ -38,16 +38,18 @@ $(document).ready(() => {
         $("#chat-link").append('<span id="chat-bubble"></span>');
         
         $("#chat-item-" + message.conversation_id).remove();
-
+        
         $("#conversation-overview").prepend(convoItem)
+        
         var url = window.location.pathname
         var stuff = url.split('/');
         var id = stuff[stuff.length-1]
         var chatItem = $('.chat-item[data-conversation-id="' + id + '"]')
         if (chatItem) {
           chatItem.addClass('current');
-        } else {
-          // add a bubble to the thing
+        }
+        if (id !== message.conversation_id.toString()) {
+          $("#chat-item-" + message.conversation_id + '> .chat-item').append('<span class="chat-item-unread"></span>');
         }
       }
     });
