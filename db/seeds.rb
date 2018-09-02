@@ -12,14 +12,9 @@ def_img_bank = [
   "//vzzr.s3-us-west-2.amazonaws.com/defaults/tiger.jpg",
   "//vzzr.s3-us-west-2.amazonaws.com/defaults/dino.jpg",
   "//vzzr.s3-us-west-2.amazonaws.com/defaults/panda.jpg"
-  ]
-  
-# "//vzzr.s3-us-west-2.amazonaws.com/uploads/1/videos/skull.mp4"
+]
 
-
-
-
-
+# "uploads/#{video.company_id}/videos/#{SecureRandom.uuid}${filename}"
 
 12.times do
   co = Company.create(kind: "publisher", name: Faker::Pokemon.name, description: Faker::Hipster.sentences(1).first, cover_image_url: def_img_bank.sample)
