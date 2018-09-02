@@ -11,7 +11,7 @@ class Creator::VideosController < Creator::BaseController
   end
 
   def new
-    set_s3_direct_post(@video)
+    set_s3_direct_post
     @video = current_user.company.videos.new()
     respond_to do |format|
       format.js
@@ -19,7 +19,7 @@ class Creator::VideosController < Creator::BaseController
   end
 
   def create
-    set_s3_direct_post(@video)
+    set_s3_direct_post
     @video = current_user.company.videos.new(video_params)
     if @video.save
       redirect_to creator_dashboard_path
@@ -34,13 +34,13 @@ class Creator::VideosController < Creator::BaseController
     params.require(:video).permit(:name, :url, :description, :thumbnail, :genre_id)
   end
 
-  def set_s3_direct_post(video)
+  def set_s3_direct_post
     bucket = Aws::S3::Bucket.new(
       access_key_id: ENV['AWS_ACCESS_KEY_ID'],
       secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
       region: 'us-west-2',
       name: ENV['S3_BUCKET']
     )
-    @s3_direct_post = bucket.presigned_post(key: "uploads/#{video.company_id}/videos/#{SecureRandom.uuid}${filename}", success_action_status: '201', acl: 'public-read')
+    @s3_direct_post = bucket.presigned_post(key: "uploads/#{SecureRandom.uuid}${filename}", success_action_status: '201', acl: 'public-read')
   end
 end
