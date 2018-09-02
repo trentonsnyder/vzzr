@@ -10,6 +10,9 @@
   box-shadow: 1px 1px 6px #F5F5F5;
   margin: 5px;
   max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .modal-left-section > img {
@@ -28,6 +31,7 @@
   padding: 5px;
   display: flex;
   flex-direction: column;
+  max-width: 450px;
 }
 
 .section-video {
@@ -55,6 +59,14 @@
   padding: 12px;
   display: flex;
   flex-direction: column;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.creator-details > div {
+  display: flex;
+  flex-direction: column;
+  /* flex: 1; */
 }
 
 .creator-videos {

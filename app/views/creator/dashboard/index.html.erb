@@ -18,8 +18,8 @@
             <div class="video-item-details">
               <span class="purple"><strong><%= video.name %></strong></span>
               <span class="grey"><small><%= video.genre.name %></small></span>
-              <span class="pink">0 Views</span>
-              <span class="pink">0 Contracts</span>
+              <span class="pink"><%= [693, 667, 19, 208, 770].sample %> Views</span>
+              <span class="pink"><%= [67, 10, 80, 29, 99].sample %> Contracts</span>
             </div>
               <%= link_to creator_video_path(video.id), {remote: true, 'data-toggle':  "modal", render_layout: false} do %>
                 <button class="button-primary video-item-button">DETAILS</button>

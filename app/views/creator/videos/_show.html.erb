@@ -6,9 +6,29 @@
       </video>
       <div class="video-player-details">
         <span style="color: #6F3291; font-size: 20px;"><%= @video.name %></span>
-        <span style="color: #9B9B9B; font-size: 16px;"><%= @video.description %></span>
-        <span style="color: #EC4D77; font-size: 12px;">0 views</span>
         <span style="color: #EC4D77; font-size: 12px;"><%= @video.genre.name %></span>
+        <span style="color: #9B9B9B; font-size: 16px;"><%= @video.description %></span>
+        <div class="video-bottom">
+          <div>
+            <div>
+              <span style="color: #6F3291; font-size: 12px;">Director - </span>
+              <span style="color: #EC4D77; font-size: 12px;">Greg Stanford</span>
+            </div>
+            <div>
+              <span style="color: #6F3291; font-size: 12px;">Producer - </span>
+              <span style="color: #EC4D77; font-size: 12px;">Stacy Barnes</span>
+            </div>
+            <div>
+              <span style="color: #6F3291; font-size: 12px;">Actor - </span>
+              <span style="color: #EC4D77; font-size: 12px;">Leeroy Jenkins</span>
+            </div>
+          </div>
+          <div>
+            <button class="button-secondary">Contracts</button>
+            <button class="button-secondary">Analytics</button>
+            <button class="button-secondary">Settings</button>
+          </div>
+        </div>
       </div>
       <div class="video-close close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true"><strong>&times;</strong></span>

@@ -8,9 +8,35 @@
         <div class="bazaar-item">
           <img src="<%= pub.cover_image_url %>" />
           <div class="bazaar-item-details">
-            <span><strong><%= pub.name %></strong></span>
-            <span><%= pub.description %></span>
-            <span>0 Views</span>
+            <div>
+              <span style="color: #6F3291; font-size: 16px;"><strong><%= pub.name %></strong></span>
+              <br/>
+              <span style="color: #9B9B9B; font-size: 13px;"><%= pub.description %></span>
+            </div>
+            <span style="color: #6F3291; font-size: 15px;"><%= [156, 332, 889, 99, 423].sample %> / Views</span>
+          </div>
+          <%= link_to creator_publisher_path(pub.id), {remote: true, 'data-toggle':  "modal", render_layout: false} do %>
+            <button class="button-primary">DETAILS</button>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="bazaar-row">
+    <div class="bazaar-heading">
+      <span><strong>New Publishers</strong></span>
+    </div>
+    <div class="bazaar-publishers">
+      <% @publishers2.each do |pub| %>
+        <div class="bazaar-item">
+          <img src="<%= pub.cover_image_url %>" />
+          <div class="bazaar-item-details">
+            <div>
+              <span style="color: #6F3291; font-size: 16px;"><strong><%= pub.name %></strong></span>
+              <br/>
+              <span style="color: #9B9B9B; font-size: 13px;"><%= pub.description %></span>
+            </div>
+            <span style="color: #6F3291; font-size: 15px;"><%= [156, 332, 889, 99, 423].sample %> / Views</span>
           </div>
           <%= link_to creator_publisher_path(pub.id), {remote: true, 'data-toggle':  "modal", render_layout: false} do %>
             <button class="button-primary">DETAILS</button>

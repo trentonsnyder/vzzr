@@ -144,3 +144,38 @@
 #convo-form-input {
   margin-bottom: 12px;
 }
+
+.chat-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-details > div {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: space-between;
+  padding: 15px 25px;
+}
+
+.chat-details-description {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.chat-details-bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.chat-details-bottom > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.chat-details-bottom > div > button {
+  margin: 5px;
+}
